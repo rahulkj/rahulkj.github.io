@@ -28,11 +28,9 @@ twitter_username: rahulkj
 github_username:  rahulkj
 
 # Build settings
-google_analytics:
-theme: jekyll-theme-cayman
+theme: minima
 plugins:
   - jekyll-feed
-show_downloads: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
