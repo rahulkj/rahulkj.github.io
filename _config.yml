@@ -32,7 +32,7 @@ google_analytics:
 theme: jekyll-theme-hacker
 plugins:
   - jekyll-feed
-  show_downloads: true
+show_downloads: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
