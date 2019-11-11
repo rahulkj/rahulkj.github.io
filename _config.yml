@@ -29,7 +29,7 @@ github_username:  rahulkj
 
 # Build settings
 google_analytics:
-theme: jekyll-theme-hacker
+theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
 show_downloads: true
