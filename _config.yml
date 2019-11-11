@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Things I learnt the hard way
+title: myupbeat (blogs)
 email: rahulkj@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   This is a my personal site to host all the things that I learn the hardway.

@@ -1,4 +1,8 @@
-Cloudfoundry plugin with STS/Eclipse with Self Signed Certificates
+---
+layout: post
+title:  "Cloudfoundry plugin with STS/Eclipse with Self Signed Certificates"
+date:   2015-05-06 13:40:00 -0600
+categories: cloudfoundry development sts eclipse
 ---
 
 I'll keep this short.

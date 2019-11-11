@@ -1,4 +1,8 @@
-Certificates and their order of deployment
+---
+layout: post
+title:  "Certificates and their order of deployment"
+date:   2019-02-22 18:40:00 -0600
+categories: bosh ips cloudfoundry
 ---
 
 One common question that developers ask, "What is the sequence of specifying certificates, when using nginx?" and "Does the order really matter?"
@@ -13,5 +17,5 @@ So always make sure when the certificates are place on the nginx server, or any 
 **SERVER CERTIFICATE > INTERMEDIATE CERTIFICATE/S > ROOT CA**
 
 For more info:
-https://www.digicert.com/ssl-support/pem-ssl-creation.htm
-https://knowledge.digicert.com/solution/SO16297.html
+[https://www.digicert.com/ssl-support/pem-ssl-creation.htm](https://www.digicert.com/ssl-support/pem-ssl-creation.htm)
+[https://knowledge.digicert.com/solution/SO16297.html](https://knowledge.digicert.com/solution/SO16297.html)

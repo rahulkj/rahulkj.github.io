@@ -1,4 +1,8 @@
-How to monitor Bosh Director?
+---
+layout: post
+title:  "How to monitor Bosh Director?"
+date:   2019-10-2 12:51:00 -0600
+categories: bosh ips cloudfoundry
 ---
 
 You are here, coz you are wanting to know how to monitor your open source bosh director instance/s.

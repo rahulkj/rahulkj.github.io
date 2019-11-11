@@ -1,4 +1,8 @@
-Docker Docker
+---
+layout: post
+title:  "Docker Docker"
+date:   2017-02-04 13:36:00 -0600
+categories: docker
 ---
 
 - To create a docker image, first create a `Dockerfile` in a director and then start editing the file.
@@ -34,4 +38,4 @@ RUN go get github.com/vmware/govmomi/govc
   - `docker login`
   - `docker push rjain/buildbox`
 
-- And verify that your image is showing up on https://hub.docker.com/
+- And verify that your image is showing up on [https://hub.docker.com/](https://hub.docker.com/)

@@ -1,4 +1,8 @@
-Build and upload docker images using concourse
+---
+layout: post
+title:  "Build and upload docker images using concourse"
+date:   2019-06-07 21:15:00 -0600
+categories: concourse docker
 ---
 
 Concourse is an amazing pipelining tool. Given the extensible nature of the tool, one can write a pipeline to execute anything. The fun never ends here.

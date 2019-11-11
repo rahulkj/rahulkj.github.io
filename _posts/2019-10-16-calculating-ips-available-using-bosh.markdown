@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Calculating IPs available using Bosh"
+title:  "Calculating IPs Available Using Bosh"
 date:   2019-10-16 23:35:00 -0600
 categories: bosh ips cloudfoundry
 ---

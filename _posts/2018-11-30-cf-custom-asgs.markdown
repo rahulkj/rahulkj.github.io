@@ -1,4 +1,8 @@
-Custom ASGs for Cloud Foundry
+---
+layout: post
+title:  "Custom ASGs for Cloud Foundry"
+date:   2018-11-30 11:21:00 -0600
+categories: cloudfoundry security asgs
 ---
 
 - Execute `cf security-groups`. The output will look like this

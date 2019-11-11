@@ -1,0 +1,16 @@
+---
+layout: post
+title:  "Useful Plugins for CloudFoundry operators"
+date:   2016-07-06 10:47:00 -0600
+categories: cloudfoundry plugins
+---
+
+Having trouble gathering information from your cloud foundry deployment? Before scripting something new, look at [http://plugins.cloudfoundry.org](http://plugins.cloudfoundry.org)
+
+If you're not satisfied enough, then here are couple more plugins:
+
+[https://github.com/rahulkj/app-info](https://github.com/rahulkj/app-info)
+
+MORE TO COME
+
+Keep an eye at this blog post and [Rohit's blog](http://cloud.rohitkelapure.com/2015/06/top-50-cloud-foundry-tools-and.html)

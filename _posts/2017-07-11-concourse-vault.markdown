@@ -1,4 +1,8 @@
-Using Vault as Credential Manager with Concourse
+---
+layout: post
+title:  "Using Vault as Credential Manager with Concourse"
+date:   2017-07-11 11:46:00 -0600
+categories: concourse vault
 ---
 
 - Deploy Vault release using the [vault.yml](https://github.com/rahul-kj/concourse-vault/blob/master/vault.yml)

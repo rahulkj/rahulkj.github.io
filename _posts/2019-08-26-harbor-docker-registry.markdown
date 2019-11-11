@@ -1,4 +1,8 @@
-Harbor & Docker Images
+---
+layout: post
+title:  "Harbor & Docker Images"
+date:   2019-08-26 14:07:00 -0600
+categories: docker harbor registry
 ---
 
 ## Why Harbor?
@@ -11,7 +15,7 @@ Harbor solves common challenges by delivering trust, compliance, performance, an
 - There are 2 options,
   - buy a public certificate or use a self-signed certificate. If you have a public certificate, then using Harbor with docker cli, should be straight forward.
   - But if you have a self-signed certificate, then you will need to add the harbor url in docker insecure registry. Its under `preferences > daemon > insecure registries`
-  
+
 
 - Restart docker.
 
