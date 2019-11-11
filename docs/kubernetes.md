@@ -1,0 +1,63 @@
+Kubernetes
+---
+
+### Master node
+
+ETCD - Backed database
+default port 2379
+
+Kube Scheduler - Deploys containers on the nodes
+
+Controller Manager
+- Node Controller (Health and placement of the containers)
+- Replication Controller (desired state of the containers)
+
+Kube API Server - Orchestrator
+
+
+### Worker Node/s
+Kubelet - run on each node (takes instructions from api server)
+Kube-proxy - layer to allow containers to communicate with each other
+
+
+## PKS NOTES
+
+pks login -a api.pks.homelab.io -u admin -k
+
+Fetch the password from PKS tile > Credentials > Uaa Admin Password
+
+or `om -e env.yml credential-reference --name ".properties.uaa_admin_password"`
+
+pks create-cluster test-cluster-01 --external-hostname test-cluster-01.pks.homelab.io --plan small --num-nodes 3
+
+watch pks cluster test-cluster-01
+
+pks clusters
+```
+PKS Version    Name             k8s Version  Plan Name  UUID                                  Status     Action
+1.5.1-build.8  test-cluster-01  1.14.6       small      52ef8510-9579-4222-bc8a-534897ab0a51  succeeded  CREATE
+```
+
+pks cluster test-cluster-01
+
+Create DNS record
+
+pks get-credentials test-cluster-01
+```
+Fetching credentials for cluster test-cluster-01.
+Context set for cluster test-cluster-01.
+
+You can now switch between clusters by using:
+$kubectl config use-context <cluster-name>
+```
+
+kubectl config use-context test-cluster-01
+
+kubectl get nodes
+
+kubectl run hello-node --image=gcr.io/google-samples/node-hello:1.0
+
+kubectl config view -o jsonpath='{.contexts[?(@.name == "test-cluster-01")].context.user}'
+kubectl describe secret $(kubectl describe serviceaccounts e53bdfa6-ab94-46a9-9ba8-fbb0c0cbf78f | grep Tokens | awk '{print $2}') | grep "token:"
+
+kubectl proxy
