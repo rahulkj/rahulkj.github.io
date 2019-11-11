@@ -1,4 +1,8 @@
-Install and Configuration of various softwares
+---
+layout: post
+title:  "Install and Configuration of various softwares"
+date:   2012-11-27 16:00:00 -0600
+categories: mac softwares
 ---
 
 I prefer using HomeBrew to brew my Mac. If you don't already have HomeBrew on your Mac, get it by running

@@ -1,4 +1,8 @@
-Steps for setting up Elasticsearch, logstash and Kibana on Ubuntu 15.04
+---
+layout: post
+title:  "Steps for setting up Elasticsearch, logstash and Kibana on Ubuntu 15.04"
+date:   2015-06-25 13:50:00 -0600
+categories: ubuntu ELK
 ---
 
 Here's a dump of all the steps you need to perform to setup a ELK instance on your VM

@@ -1,4 +1,8 @@
-Kubernetes
+---
+layout: post
+title:  "Kubernetes"
+date:   2019-11-11 09:35:00 -0600
+categories: kubernetes pks
 ---
 
 ### Master node

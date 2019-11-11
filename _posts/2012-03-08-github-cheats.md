@@ -1,4 +1,8 @@
-Github Cheats
+---
+layout: post
+title:  "Github Cheats"
+date:   2012-03-08 14:05:00 -0600
+categories: git commands
 ---
 
 Visit GitHub at [GitHub](http://github.com)

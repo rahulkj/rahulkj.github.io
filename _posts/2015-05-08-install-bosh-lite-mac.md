@@ -1,4 +1,8 @@
-Installing bosh-lite on your Mac's
+---
+layout: post
+title:  "Installing bosh-lite on your Mac's"
+date:   2015-05-08 17:06:00 -0600
+categories: bosh-lite
 ---
 
 If you're here, then you are looking to explore cloudfoundry, and wondering if there is a script that you could use to setup `bosh-lite` on your local machine (Mac's). Guess what, you're lucky, as there's one script available out there on git.

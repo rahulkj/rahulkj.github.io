@@ -1,4 +1,8 @@
-Resolving domain names on Mac
+---
+layout: post
+title:  "Resolving domain names on Mac"
+date:   2014-10-09 16:53:00 -0600
+categories: mac dns
 ---
 
 Having trouble resolving domain names on your mac??

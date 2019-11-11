@@ -1,4 +1,8 @@
-JSON Parsing
+---
+layout: post
+title:  "JSON Parsing"
+date:   2013-02-22 15:05:00 -0600
+categories: java json
 ---
 
 Recently, I had a requirement, where in I had to read a property file which contains JSON strings.

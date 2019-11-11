@@ -1,4 +1,8 @@
-Maven Java Service Wrappers
+---
+layout: post
+title:  "Maven Java Service Wrappers"
+date:   2013-04-03 16:54:00 -0600
+categories: ubuntu ldap
 ---
 
 Maven Java Service Wrappers are useful for generating daemon scripts for the stand alone java programs.

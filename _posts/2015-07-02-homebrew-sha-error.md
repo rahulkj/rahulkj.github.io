@@ -1,4 +1,8 @@
-SHA1 error when using brew upgrade
+---
+layout: post
+title:  "SHA1 error when using brew upgrade"
+date:   2015-07-02 14:53:00 -0600
+categories: git commands
 ---
 
 Recently I was trying to upgrade my `cloudfoundry-cli` via brew, and I received the SHA mismatch error:

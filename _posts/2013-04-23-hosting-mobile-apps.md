@@ -1,4 +1,8 @@
-Hosting iOS and Android apps from your own portal
+---
+layout: post
+title:  "Hosting iOS and Android apps from your own portal"
+date:   2013-04-23 12:10:00 -0600
+categories: mobile apps
 ---
 
 Want to host your iOS and Android applications for development and QA testing?

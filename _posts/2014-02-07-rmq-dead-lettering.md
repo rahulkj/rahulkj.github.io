@@ -1,4 +1,8 @@
-RabbitMQ Dead lettering
+---
+layout: post
+title:  "RabbitMQ Dead lettering"
+date:   2014-02-07 12:46:00 -0600
+categories: rabbitmq dead-lettering
 ---
 
 Dead lettering concept has been around for quite sometime.

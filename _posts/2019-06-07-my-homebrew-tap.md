@@ -1,4 +1,8 @@
-Brew tap for concourse and Pivotal cli's
+---
+layout: post
+title:  "homebrew tap for concourse and Pivotal cli's"
+date:   2019-06-07 08:52:00 -0600
+categories: homebrew tap
 ---
 
 Downloading and placing the CLI's in the right location on Mac's is always a pain. I was looking to automate the upgrade of CLI's on my mac, and while scripting, I thought, it would be useful, if I created a brew tap, that could install the required cli's for me, and also help others around the globe.

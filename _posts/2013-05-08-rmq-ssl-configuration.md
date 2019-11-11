@@ -1,4 +1,8 @@
-RabbitMQ and SSL configuration
+---
+layout: post
+title:  "RabbitMQ and SSL configuration"
+date:   2013-05-08 15:40:00 -0600
+categories: rabbitmq security ssl
 ---
 
 Configuring SSL on RabbitMQ is fairly simple, if you follow the SSL guide posted on http://www.rabbitmq.com/ssl.html

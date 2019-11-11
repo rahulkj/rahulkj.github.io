@@ -1,4 +1,8 @@
-Transfer all git repos to another org
+---
+layout: post
+title:  "Transfer all git repos to another org"
+date:   2019-07-27 05:28:00 -0600
+categories: git ownership
 ---
 
 I wrote a handy script to transfer ownership of all repositories that belong to a user, to another user/org
