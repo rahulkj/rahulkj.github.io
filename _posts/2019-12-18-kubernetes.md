@@ -8,26 +8,35 @@ categories: kubernetes
 
 ## Objects
 To list all objects across all namespaces
-`kubectl get all --all-namespaces`
+
+| Operation | Command |
+| - | - |
+| Get All | `kubectl get all --all-namespaces` |
 
 ## Namespaces
 
+| Operation | Command |
+| - | - |
 | Create | kubectl create namespace ingress-space |
 
 ## ConfigMaps
 
+| Operation | Command |
+| - | - |
 | Create | kubectl create configmap nginx-configuration --namespace some-space |
 
 ## Service Accounts
 
+| Operation | Command |
+| - | - |
 | Create | kubectl create serviceaccount some-serviceaccount --namespace some-space |
 
 ## Roles, RoleBindings
 
-List all
-`kubectl get roles,rolebindings --all-namespaces`
-List for a space
-`kubectl get roles,rolebindings --namespace ingress-space`
+| Operation | Command |
+| - | - |
+| List all | `kubectl get roles,rolebindings --all-namespaces` |
+| List for a space | `kubectl get roles,rolebindings --namespace ingress-space` |
 
 ### Pods
 ```
@@ -342,9 +351,72 @@ spec:
             command: ['echo', 'Hello World']
           restartPolicy: Never
 ```
+
 | Operation | Command |
 | - | - |
 | Create | kubectl create -f job-definition.yml |
 | Get | kubectl get cronjobs |
 | Logs | kubectl logs pod-name |
 | Delete | kubectl delete cronjob job-name |
+
+
+## Network Policies
+Define ingress and egress rules, for container to container access. Default is allow all access.
+
+kube-router
+calico
+romana
+weave-net
+
+```
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: app-policy
+spec:
+  podSelector:
+    matchLabels:
+      role: app
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          name: db-pod
+    ports:
+    - protocol: TCP
+    port: 3306
+```
+
+```
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: app-policy
+spec:
+  podSelector:
+    matchLabels:
+      role: app
+  policyTypes:
+  - Egress
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          name: db-pod
+    ports:
+    - protocol: TCP
+    port: 3306
+```
+
+| Operation | Command |
+| - | - |
+| Get | kubectl get networkpolicies |
+| Describe | kubectl describe networkpolicy payroll-policy |
+| Create | kubectl create -f networkpolicy-definition.yml |
+| Delete | kubectl delete networkpolicy policy-name |
+
+
+## Volumes
+Data is destroyed along with containers. So if you want to retain the data, you need to attach persistent disk to the containers
