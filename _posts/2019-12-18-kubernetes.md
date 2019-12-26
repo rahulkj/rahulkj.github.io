@@ -5,19 +5,73 @@ date:   2019-12-18 09:35:00 -0600
 categories: kubernetes
 ---
 
+## Architecture
 
-## Objects
-To list all objects across all namespaces
+Master consists of:
+* API Server - Frontend to k8s to communicate with the cluster
+* ETCD - Distributed key-value store to persist data on the cluster. Implements locks
+* Scheduler - Distributes the workload across workers
+* Controller - Monitor pods
+
+Node consists of:
+* Kubelet - agent on each node that is responsible to monitor the containers are running as expected
+* Container Runtime - provide runtime to run the containers
+
+Pod is the smallest object that exists in k8s. It encapsulate the container and provides storage, networking, etc to the container
+
+Single pod can have multiple containers (of different type). These additional containers are called helper containers.
+
+## apiVersion Reference
+
+| kind | version |
+| - | - |
+| Pod | v1 |
+| Service | v1 |
+| ReplicaSet | apps/v1 |
+| Deployment | apps/v1 |
+| Ingress | extensions/v1beta1 |
+| Job | batch/v1 |
+| CronJob | batch/v1beta1 |
+| ServiceAccount | v1 |
+| NetworkPolicy | networking.k8s.io/v1 |
+
+## kubectl basic commands
 
 | Operation | Command |
 | - | - |
-| Get All | `kubectl get all --all-namespaces` |
+| Get All namespaces | `kubectl get all --all-namespaces` |
+| Get Cluster Info | `kubectl cluster-info` |
+| Get any object | `kubectl get nodes/pods/services/etc` |
 
 ## Namespaces
+
+Workspaces that are constrained to resources. Pre-provisioned namespaces are:
+- kube-system
+- kube-public
+- default
+
+```
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+```
 
 | Operation | Command |
 | - | - |
 | Create | kubectl create namespace ingress-space |
+| Delete | kubectl delete namespace ingress-space |
+| Get Objects | kubectl get pods --namespace=space-name |
+| Set context | kubectl config set-context $(kubectl config current-context) --namespace=some-space |
+
+Referencing to services running in different pods:
+
+`redis-service.dev.svc.cluster.local`
+
+domain: `cluster.local`
+Service: `svc`
+Namespace: `dev`
+Service name: `redis-service`
 
 ## ConfigMaps
 
@@ -84,6 +138,95 @@ spec:
 | History | kubectl rollout history deployment/deployment-name |
 | Rollback | kubectl rollout undo deployment/deployment-name |
 | Delete | kubectl delete pod pod-name |
+| Get Details | kubectl describe pod pod-name |
+
+Generate the pod manifest yml:
+`kubectl run --generator=run-pod/v1 nginx --image=nginx --dry-run -o yaml`
+
+## ReplicaSet
+
+Ensures the given number of containers are running. IF we edit the replicaset definition, and run the `replace` command, it will not update the pods, with the new configuration. One has to delete the pods manually, so the new pods will get the latest configuration.
+
+```
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    name: webapp
+  name: frontend
+  namespace: default
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      name: webapp
+  template:
+    metadata:
+      labels:
+        name: webapp
+    spec:
+      containers:
+      - image: docker-repo/image-name:version       <-- Container image
+        name: webapp
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+```
+
+| Operation | Command |
+| - | - |
+| Create | kubectl create -f rs-definition.yml |
+| Get | kubectl get replicaset |
+| Replace | kubectl replace -f rs-definition.yml |
+| Scale | kubectl scale --replicas=x -f rs-definition.yml |
+| Delete | kubectl delete replicaset rs-name |
+
+## Deployments
+
+```
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    name: webapp
+  name: frontend
+  namespace: default
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      name: webapp
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate                             <-- Recreate or RollingUpdate
+  template:
+    metadata:
+      labels:
+        name: webapp
+    spec:
+      containers:
+      - image: docker-repo/image-name:version       <-- Container image
+        name: webapp
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+```
+
+| Operation | Command |
+| - | - |
+| Create | kubectl create -f deployment-definition.yml |
+|  | kubectl run --generator=deployment/v1beta1 nginx --image=nginx |
+| Get | kubectl get deployments |
+| Update | kubectl apply -f deployment-definition.yml |
+| Update a paramater | kubectl set image deployment/deployment-name name=image |
+| Status | kubectl rollout status deployment/deployment-name |
+| History | kubectl rollout history deployment/deployment-name |
+| Rollback | kubectl rollout undo deployment/deployment-name |
+| Generate | kubectl create deployment --image=nginx nginx --dry-run -o yaml |
 
 ## Services
 
@@ -247,51 +390,6 @@ spec:
 ```
 
 Ingress resources (pods/deployments/services)
-
-
-## Deployments
-```
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  labels:
-    name: webapp
-  name: frontend
-  namespace: default
-spec:
-  replicas: 4
-  selector:
-    matchLabels:
-      name: webapp
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate                             <-- Recreate or RollingUpdate
-  template:
-    metadata:
-      labels:
-        name: webapp
-    spec:
-      containers:
-      - image: docker-repo/image-name:version       <-- Container image
-        name: webapp
-        ports:
-        - containerPort: 8080
-          protocol: TCP
-        resources: {}
-```
-
-| Operation | Command |
-| - | - |
-| Create | kubectl create -f deployment-definition.yml |
-| Get | kubectl get deployments |
-| Update | kubectl apply -f deployment-definition.yml |
-| Update a paramater | kubectl set image deployment/deployment-name name=image |
-| Status | kubectl rollout status deployment/deployment-name |
-| History | kubectl rollout history deployment/deployment-name |
-| Rollback | kubectl rollout undo deployment/deployment-name |
-| Expose | kubectl expose deployment -n ingress-space ingress-controller --type=NodePort --port=80 --name=ingress |
 
 ## Jobs
 ```
