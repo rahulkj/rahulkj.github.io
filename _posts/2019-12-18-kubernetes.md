@@ -518,3 +518,13 @@ spec:
 
 ## Volumes
 Data is destroyed along with containers. So if you want to retain the data, you need to attach persistent disk to the containers
+
+## Commands & Arguments
+In Dockerfile if we specify `CMD sleep 5`, then the docker image on `run` will start and execute what the `CMD` is specified with
+If we use `ENRTYPOINT["sleep"]`, then the docker image on `run 10` will start and execute the `CMD` `sleep` for 10 seconds
+
+To set a default value if an argument isn't passed, then in the Dockerfile, add `CMD 30`, where 30 is the number of seconds that is set by default
+
+docker to k8s mapping:
+`ENTRYPOINT` -> `command:`
+`CMD` -> `args:`
