@@ -5,6 +5,8 @@ date:   2019-12-18 09:35:00 -0600
 categories: kubernetes
 ---
 
+Cheat Sheet - https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+
 ## Architecture
 
 Master consists of:
@@ -528,3 +530,460 @@ To set a default value if an argument isn't passed, then in the Dockerfile, add 
 docker to k8s mapping:
 `ENTRYPOINT` -> `command:`
 `CMD` -> `args:`
+
+```
+apiVersion: v1                                  <-- apiVersion for Pod
+kind: Pod
+metadata:
+  labels:
+    name: webapp                                <-- Define label/s
+  name: something
+  namespace: default
+spec:
+  containers:
+  - image: docker-repo/image-name:version       <-- Container image
+    name: webapp
+    command:
+    - sleep
+    args:
+    - "20"
+```
+
+## Environment Variables
+
+Simple enough to define the name value pairs
+```
+  env:
+  - name:
+    value:
+```
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echo
+  labels:
+    app: echo
+spec:
+  containers:
+  - name: echo
+    image: ubuntu:latest
+    command:
+    - env
+    env:
+    - name: IMAGE
+      value: ubuntu
+```
+
+## ConfigMaps
+
+`kubectl create configmap <config-name> --from-literal=<key>=<value>`
+`kubectl create configmap <config-name> --from-file=<path-to-file>`
+
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: echo-config
+data:
+  IMAGE: ubuntu
+  ENV: dev
+```
+
+Referencing from the pod:
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echo
+  labels:
+    app: echo
+spec:
+  containers:
+  - name: echo
+    image: ubuntu:latest
+    command:
+    - env
+    envFrom:
+    - configMapRef:
+        name: echo-config
+```
+
+## Secrets
+
+`kubectl create secret generic <secret-name> --from-literal=<key>=<value>`
+`kubectl create secret generic <secret-name> --from-file=<path-to-file>`
+
+`echo -n "ubuntu" | base64`
+`echo -n "dev" | base64`
+
+```
+apiVersion: v1
+kind: Secret
+metadata:
+  name: echo-secret
+data:
+  IMAGE: ENCODED-VALUE
+  ENV: ENCODED-VALUE
+```
+
+`echo -n "ENCODE-VALUE" | base64 --decode`
+
+Referencing from the pod:
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echo
+  labels:
+    app: echo
+spec:
+  containers:
+  - name: echo
+    image: ubuntu:latest
+    command:
+    - env
+    env:
+    - name: IMAGE
+      valueFrom:
+        secretKeyRef:
+          name: echo-secret
+          key: IMAGE
+```
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echo
+  labels:
+    app: echo
+spec:
+  containers:
+  - name: echo
+    image: ubuntu:latest
+    command:
+    - env
+    envFrom:
+    - secretRef:
+        name: echo-secret
+```
+
+Security Contexts:
+
+For specific container:
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echo
+  labels:
+    app: echo
+spec:
+  containers:
+  - name: echo
+    image: ubuntu:latest
+    command:
+    - env
+    envFrom:
+    - secretRef:
+        name: echo-secret
+    securityContext:
+      runAsUser: 1000
+      capabilities:
+        add: ["MAC_ADMIN"]
+```
+
+OR "For all containers"
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echo
+  labels:
+    app: echo
+spec:
+  securityContext:
+    runAsUser: 1000
+    capabilities:
+      add: ["MAC_ADMIN"]
+  containers:
+  - name: echo
+    image: ubuntu:latest
+    command:
+    - env
+    envFrom:
+    - secretRef:
+        name: echo-secret
+```
+
+`kubectl exec ubuntu-sleeper whoami`
+
+## Service Accounts
+
+`kubectl create serviceaccount <name>`
+`kubectl get serviceaccount <name>`
+`kubectl describe serviceaccount <name>` > extract the token and use it in the pod definition
+`kubectl describe secret <token-name>`
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echo
+  labels:
+    app: echo
+spec:
+  serviceAccount: account-name
+  containers:
+  - name: echo
+    image: ubuntu:latest
+    command:
+    - env
+    envFrom:
+    - secretRef:
+        name: echo-secret
+```
+
+## Resource Requirements
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echo
+  labels:
+    app: echo
+spec:
+  serviceAccount: account-name
+  containers:
+  - name: echo
+    image: ubuntu:latest
+    command:
+    - env
+    envFrom:
+    - secretRef:
+        name: echo-secret
+    resources:
+      limits:
+        cpu: 1
+        memory: 10Gi
+      requests:
+        cpu: 1
+        memory: 5Gi
+```
+
+## Taints & Tolerations
+
+Tells nodes on what workload it can run
+
+`kubectl taint nodes node-name key=value:taint-effect`          <-- NoSchedule | PreferNoSchedule | NoExecute
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echo
+  labels:
+    app: echo
+spec:
+  serviceAccount: account-name
+  containers:
+  - name: echo
+    image: ubuntu:latest
+    command:
+    - env
+    envFrom:
+    - secretRef:
+        name: echo-secret
+  tolerations:
+  - key: "key"
+    operator: "Equal"
+    value: "value"
+    effect: "taint-effect"
+```
+
+## Node Selectors & Node Affinity
+
+* Node Selectors cannot be used to add operators
+
+`kubectl label nodes <node> <key>=<value>`
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echo
+  labels:
+    app: echo
+spec:
+  serviceAccount: account-name
+  containers:
+  - name: echo
+    image: ubuntu:latest
+  nodeSelector:
+    key: value
+```
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echo
+  labels:
+    app: echo
+spec:
+  serviceAccount: account-name
+  containers:
+  - name: echo
+    image: ubuntu:latest
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoreDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: key
+            operator: In
+            values:
+            - value
+```
+
+SideCar
+Adapter
+Ambassador
+
+## Readiness & Liveness probes
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echo
+  labels:
+    app: echo
+spec:
+  serviceAccount: account-name
+  containers:
+  - name: echo
+    image: ubuntu:latest
+    ports:
+    - containerPort: 8080
+    readinessProbe:
+      httpGet:
+        path: /api/something
+        port: 8080
+      initialDelaySeconds: 10
+      periodSeconds: 5
+      failureThreshold: 8
+```
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echo
+  labels:
+    app: echo
+spec:
+  serviceAccount: account-name
+  containers:
+  - name: echo
+    image: ubuntu:latest
+    ports:
+    - containerPort: 8080
+    readinessProbe:
+      tcpSocket:
+        port: 8080
+```
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echo
+  labels:
+    app: echo
+spec:
+  serviceAccount: account-name
+  containers:
+  - name: echo
+    image: ubuntu:latest
+    ports:
+    - containerPort: 8080
+    readinessProbe:
+      exec:
+        command:
+        - cat
+        - /app/is_ready
+```
+
+
+Liveness Probes
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echo
+  labels:
+    app: echo
+spec:
+  serviceAccount: account-name
+  containers:
+  - name: echo
+    image: ubuntu:latest
+    ports:
+    - containerPort: 8080
+    livenessProbe:
+      httpGet:
+        path: /api/something
+        port: 8080
+      initialDelaySeconds: 10
+      periodSeconds: 5
+      failureThreshold: 8
+```
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echo
+  labels:
+    app: echo
+spec:
+  serviceAccount: account-name
+  containers:
+  - name: echo
+    image: ubuntu:latest
+    ports:
+    - containerPort: 8080
+    livenessProbe:
+      tcpSocket:
+        port: 8080
+```
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echo
+  labels:
+    app: echo
+spec:
+  serviceAccount: account-name
+  containers:
+  - name: echo
+    image: ubuntu:latest
+    ports:
+    - containerPort: 8080
+    livenessProbe:
+      exec:
+        command:
+        - cat
+        - /app/is_ready
+```
+
+`kubectl top node/pod`
