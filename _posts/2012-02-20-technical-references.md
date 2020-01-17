@@ -56,3 +56,6 @@ pod setup
 ```
 
 if `pod setup` fails, ensure you delete `~/.cocoapods/*` and try again
+
+Burn a DVD using ISO on mac
+`hdiutil burn some-image.iso`
