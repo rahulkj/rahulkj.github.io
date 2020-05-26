@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Transfer AWS domain from one account to another using CLI"
+title:  "Transfer AWS domain from one account to another using AWS CLI"
 date:   2020-05-26 11:20:00 -0600
 categories: technology
 ---
@@ -39,8 +39,8 @@ To accept the domain being transferred from the old/source AWS account, you need
 where the contents of `accept-domain.json` are:
 ```
 {
-    "DomainName": "",
-    "Password": ""
+    "DomainName": "test.com",
+    "Password": "K0xwW`}M+[br''"
 }
 ```
 
