@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Setup Tanzu Kubernetes Grid (TKG) on vSphere 6.7u3"
-date:   2020-09-06 17:00:00 -0600
-categories: technology,k8s,tkg,vsphere
+date:   2020-06-09 5:00:00 -0600
+categories: tkg
 ---
 
 To setup Tanzu Kubernetes Grid on vSphere 6.7u3, download the files from [VMWare Downloads](https://tanzu.vmware.com/kubernetes-grid)
