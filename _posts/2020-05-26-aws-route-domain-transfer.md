@@ -13,8 +13,8 @@ Procedure to transfer the AWS domain from one AWS account to another AWS account
 ## Initiate transfer from old account to new account
 
 To initiate the transfer of a domain, gather the following information:
-- Domain name _(domain you want to transfer, exaple test.com)_
-- Accout Id _(AWS account id of the target AWS account)_
+- Domain name _(domain you want to transfer, example test.com)_
+- Account Id _(AWS account id of the target AWS account)_
 
 Once you have the information handy, you can execute the command:
 - `aws configure` _(configure with your source/old AWS account details)_
@@ -28,7 +28,7 @@ Once the request is successful, you will get the output as below:
 }
 ```
 
-The above output means, your request for transfer the domain was initated and is waiting on the next step, where the target AWS account, needs to accept the transfer.
+The above output means, your request for transfer the domain was initiated and is waiting on the next step, where the target AWS account, needs to accept the transfer.
 
 ## Accept the domain transfer from the target account
 
