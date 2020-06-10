@@ -8,7 +8,7 @@ categories: tkg
 To setup Tanzu Kubernetes Grid on vSphere 6.7u3, download the files from [VMWare Downloads](https://tanzu.vmware.com/kubernetes-grid)
 
 ## Prerequisites
-- Ensure there is anetwork available in vCenter that has DHCP enabled
+- Ensure there is a network available in vCenter that has DHCP enabled
 - The network used to deploy TKG is routable
 - DNS server thats presented by DHCP server can resolve the vCenter FQDN. If not, during configuration use the IP Address of vCenter and not FQDN
 - HA cluster with DRS enabled
