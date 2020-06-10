@@ -66,6 +66,8 @@ To setup Tanzu Kubernetes Grid on vSphere 6.7u3, download the files from [VMWare
 
 - This process of creating the management cluster would take a few minutes to spin up the vms on vSphere.
 
+    ![]({{ site.url }}/assets/TKG-10.png)
+
 ### Deploying workload cluster
 
 - Once the management cluster is built out, the next step would be to deploy the workload cluster. 
@@ -90,7 +92,14 @@ Switched to context "tkg-admin@tkg".
 ```
 
 ```
-> tkg create cluster cluster01 --plan=dev -w 3
+> tkg create cluster ks81 -p dev -w 3
+Logs of the command execution can also be found at: /var/folders/fj/c15y_t9x21b8vvmgglvgln8r0000gn/T/tkg-20200609T204435049272880.log
+Creating workload cluster 'ks81'...
+
+Validating configuration...
+Waiting for cluster nodes to be available...
+
+Workload cluster 'ks81' created
 ```
 
 - Only two plans are available `dev` and `prod`. You can choose one of those. Also you can specify the number of workers you want to begin with, in the above command I went with `3` worker nodes
