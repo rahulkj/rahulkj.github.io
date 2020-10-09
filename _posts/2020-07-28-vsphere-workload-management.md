@@ -23,41 +23,6 @@ To enable Workload Management on vSphere 7, ensure the following steps are compl
 * On the clutser, enable DRS and HA. Ensure the vmk0 is enabled for vMotion & vSAN
 * Deploy `T0-Router`
 
-* If all the above is done, then click on vCenter > Menu > Workload Management
-  - Click Enable, and you should see the clusters in the compatible list
-    - Cluster: `WORKLOAD`
-    - Size: `Tiny`
-    - Management `Network`
-      - Network: `VM Network`
-      - Start IP Address: `172.16.2.101`
-      - Subnet Mask: `255.255.252.0`
-      - Gateway: `172.16.2.1`
-      - DNS Server: `172.16.2.1`
-      - NTP Server: `172.16.2.12`
-      - DNS Search Domain: `homelab.io`
-    - Workload Network
-      - vSphere Distributed Switch: `TEP`
-      - Edge Cluster: `edge-cluster`
-      - API Server endpoint FQDN: `supervisor.homelab.io`
-      - DNS Server: `172.16.2.1`
-      - Pod CIDRs: `10.244.0.0/21`
-      - Service CIDRs: `10.96.0.0/24`
-      - Ingress CIRDs: `172.16.2.128/27`
-      - Egress CIDRs: `172.16.2.192/27`
-    - Storage:
-      - Control Plane Node: `k8s-storage`
-      - Ephemeral Disks: `k8s-storage`
-      - Image Cache: `k8s-storage`
-    - Review and apply
-
-* To view the logs of the ongoing activities:
-
-> ``` 
-> ssh root@vcenter.homelab.io
-> shell
-> tail -f /var/log/vmware/wcp/wcpsvc.logtail -f /var/log/vmware/> wcp/wcpsvc.log
-> ```
-
 * Download and host the content library on linux box script
   ```
   #!/bin/bash -x
@@ -110,6 +75,59 @@ To enable Workload Management on vSphere 7, ensure the following steps are compl
 * Setup content Library by clicking on vCenter > Menu > Content Libraries
   - Create one with the name `k8s` and  Subscribed content library: `http://ubuntu.homelab.io:9090/vmware/content/lib.json`
 
+* If all the above is done, then click on vCenter > Menu > Workload Management
+  - Click Enable, and you should see the clusters in the compatible list
+    - Cluster: `WORKLOAD`
+    - Size: `Tiny`
+    - Management `Network`
+      - Network: `VM Network`
+      - Start IP Address: `10.0.0.101`
+      - Subnet Mask: `255.255.252.0`
+      - Gateway: `10.0.0.1`
+      - DNS Server: `10.0.0.14`
+      - NTP Server: `10.0.0.12`
+      - DNS Search Domain: `homelab.io`
+    - Workload Network
+      - vSphere Distributed Switch: `TEP`
+      - Edge Cluster: `edge-cluster`
+      - API Server endpoint FQDN: `supervisor.homelab.io`
+      - DNS Server: `10.0.0.14`
+      - Pod CIDRs: `10.244.0.0/21`
+      - Service CIDRs: `10.96.0.0/24`
+      - Ingress CIRDs: `10.0.0.128/27`
+      - Egress CIDRs: `10.0.0.192/27`
+    - Storage:
+      - Control Plane Node: `k8s-storage`
+      - Ephemeral Disks: `k8s-storage`
+      - Image Cache: `k8s-storage`
+    - Review and apply
+
+    ![]({{ site.url }}/assets/v7-k8s/k8s-1.png)
+    
+    ![]({{ site.url }}/assets/v7-k8s/k8s-2.png)
+
+    ![]({{ site.url }}/assets/v7-k8s/k8s-3.png)
+
+    ![]({{ site.url }}/assets/v7-k8s/k8s-4.png)
+
+    ![]({{ site.url }}/assets/v7-k8s/k8s-5.png)
+
+    ![]({{ site.url }}/assets/v7-k8s/k8s-6.png)
+
+    ![]({{ site.url }}/assets/v7-k8s/k8s-7.png)
+
+    ![]({{ site.url }}/assets/v7-k8s/k8s-8.png)
+
+    ![]({{ site.url }}/assets/v7-k8s/k8s-9.png)
+
+* To view the logs of the ongoing activities:
+
+> ``` 
+> ssh root@vcenter.homelab.io
+> shell
+> tail -f /var/log/vmware/wcp/wcpsvc.logtail -f /var/log/vmware/> wcp/wcpsvc.log
+> ```
+
 * Click on the Cluster `WORKLOAD` > Configure > Namespaces > Image Registry > Enable Harbor, and select the `k8s-storage`. This will provision a harbor instance
 
 * Click on the Cluster `WORKLOAD` > Configure > Namespaces > General > Add Library > `k8s`
@@ -118,7 +136,7 @@ To enable Workload Management on vSphere 7, ensure the following steps are compl
 
 * Download the kubectl vsphere plugin, by connecting to the supervisor cluster. Click on the `k8s1` and on summary > status, click on Open link to CLI tools. Download the cli and put it in the path
 
-* Next connect to the supervisor cluster `k vsphere login --server=https://172.16.2.129/ --insecure-skip-tls-verify --vsphere-username=administrator@homelab.io` and login as administrator
+* Next connect to the supervisor cluster `k vsphere login --server=https://10.0.0.129/ --insecure-skip-tls-verify --vsphere-username=administrator@homelab.io` and login as administrator
 `k config use-context k8s1`
 
 * List all the k8s versions available
@@ -168,4 +186,4 @@ To enable Workload Management on vSphere 7, ensure the following steps are compl
   NAME           CONTROL PLANE   WORKER   DISTRIBUTION                     AGE     PHASE
   k8s1-cluster   3               3        v1.17.8+vmware.1-tkg.1.5417466   9m24s   running
   ```
-* Finally `k vsphere login --server=https://172.16.2.129/ --insecure-skip-tls-verify --vsphere-username=administrator@homelab.io --tanzu-kubernetes-cluster-namespace=k8s1 --tanzu-kubernetes-cluster-name=k8s1-cluster`
+* Finally `k vsphere login --server=https://10.0.0.129/ --insecure-skip-tls-verify --vsphere-username=administrator@homelab.io --tanzu-kubernetes-cluster-namespace=k8s1 --tanzu-kubernetes-cluster-name=k8s1-cluster`
