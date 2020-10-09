@@ -120,6 +120,8 @@ To enable Workload Management on vSphere 7, ensure the following steps are compl
 
     ![]({{ site.url }}/assets/v7-k8s/k8s-9.png)
 
+    ![]({{ site.url }}/assets/v7-k8s/k8s-10.png)
+
 * To view the logs of the ongoing activities:
 
 > ``` 
@@ -130,11 +132,19 @@ To enable Workload Management on vSphere 7, ensure the following steps are compl
 
 * Click on the Cluster `WORKLOAD` > Configure > Namespaces > Image Registry > Enable Harbor, and select the `k8s-storage`. This will provision a harbor instance
 
-* Click on the Cluster `WORKLOAD` > Configure > Namespaces > General > Add Library > `k8s`
+  ![]({{ site.url }}/assets/v7-k8s/k8s-11.png)
+
+* Click on the Cluster `WORKLOAD` > Configure > Namespaces > General > Add Library > `k8s-storage`
 
 * Create a namespace `k8s1` using the Workload Management
 
-* Download the kubectl vsphere plugin, by connecting to the supervisor cluster. Click on the `k8s1` and on summary > status, click on Open link to CLI tools. Download the cli and put it in the path
+  ![]({{ site.url }}/assets/v7-k8s/k8s-12.png)
+
+  ![]({{ site.url }}/assets/v7-k8s/k8s-13.png)
+
+* Download the kubectl vsphere plugin, by connecting to the supervisor cluster. Click on the `k8s1` and on summary > status, click on `Open` link to CLI tools. Download the cli and put it in the path
+
+  ![]({{ site.url }}/assets/v7-k8s/k8s-14.png)
 
 * Next connect to the supervisor cluster `k vsphere login --server=https://10.0.0.129/ --insecure-skip-tls-verify --vsphere-username=administrator@homelab.io` and login as administrator
 `k config use-context k8s1`
@@ -148,7 +158,12 @@ To enable Workload Management on vSphere 7, ensure the following steps are compl
   ob-16466772-photon-3-k8s-v1.17.7---vmware.1-tkg.1.154236c    v1.17.7+vmware.1-tkg.1.154236c    vmwarePhoton64Guest
   ob-16545581-photon-3-k8s-v1.16.12---vmware.1-tkg.1.da7afe7   v1.16.12+vmware.1-tkg.1.da7afe7   vmwarePhoton64Guest
   ob-16551547-photon-3-k8s-v1.17.8---vmware.1-tkg.1.5417466    v1.17.8+vmware.1-tkg.1.5417466    vmwarePhoton64Guest
+  ob-16897056-photon-3-k8s-v1.16.14---vmware.1-tkg.1.ada4837   v1.16.14+vmware.1-tkg.1.ada4837   vmwarePhoton64Guest
+  ob-16924026-photon-3-k8s-v1.18.5---vmware.1-tkg.1.c40d30d    v1.18.5+vmware.1-tkg.1.c40d30d    vmwarePhoton64Guest
+  ob-16924027-photon-3-k8s-v1.17.11---vmware.1-tkg.1.15f1e18   v1.17.11+vmware.1-tkg.1.15f1e18   vmwarePhoton64Guest
   ```
+
+  ![]({{ site.url }}/assets/v7-k8s/k8s-15.png)
 
 * Create a cluster yaml and then run `k create -f cluster.yaml`
   ```
@@ -178,6 +193,12 @@ To enable Workload Management on vSphere 7, ensure the following steps are compl
             pods:
               cidrBlocks: ["192.0.2.0/16"]
   ```
+
+  ```
+  ~/D/g/r/tkg ❯❯❯ k apply -f cluster.yaml
+  tanzukubernetescluster.run.tanzu.vmware.com/k8s1-cluster created
+  ```
+
   This will take a while, and you can watch the cluster creation by `k get TanzuKubernetesCluster -w`
 
 * After the cluster creation is complete, you should see
@@ -186,4 +207,5 @@ To enable Workload Management on vSphere 7, ensure the following steps are compl
   NAME           CONTROL PLANE   WORKER   DISTRIBUTION                     AGE     PHASE
   k8s1-cluster   3               3        v1.17.8+vmware.1-tkg.1.5417466   9m24s   running
   ```
+
 * Finally `k vsphere login --server=https://10.0.0.129/ --insecure-skip-tls-verify --vsphere-username=administrator@homelab.io --tanzu-kubernetes-cluster-namespace=k8s1 --tanzu-kubernetes-cluster-name=k8s1-cluster`
