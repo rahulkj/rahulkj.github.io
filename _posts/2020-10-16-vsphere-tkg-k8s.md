@@ -22,13 +22,13 @@ Then you are at the right spot!
 
   ![]({{ site.url }}/assets/tkg/1.2/TKG-1.png)
 
-* You would be presented with 2 options, to either use vSphere with Tanzu, or to use the non-integrated version, so proceed with the second option
-
-  ![]({{ site.url }}/assets/tkg/1.2/TKG-10.png)
-
 * Follow the steps to configure the vSphere IaaS
 
   ![]({{ site.url }}/assets/tkg/1.2/TKG-2.png)
+
+* You would be presented with 2 options, to either use vSphere with Tanzu, or to use the non-integrated version, so proceed with the second option
+
+  ![]({{ site.url }}/assets/tkg/1.2/TKG-10.png)
 
 * Generate a ssh key: `ssh-keygen -b 4096`. And copy the contents of the public key into the UI
 
