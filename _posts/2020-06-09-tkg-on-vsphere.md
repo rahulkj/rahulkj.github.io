@@ -29,44 +29,44 @@ To setup Tanzu Kubernetes Grid on vSphere 6.7u3, download the files from [VMWare
 - Generate a SSH keypair `ssh-keygen -b 2048 -f tkg -q -N ""`. This will generate 2 files in your current directory `tkg` and `tkg.pub`
 
 - Execute `tkg init --ui` from the command line. This will open up a tab in your default browser.
-    ![]({{ site.url }}/assets/TKG-1.png)
+    ![]({{ site.url }}/assets/tkg/1.1/TKG-1.png)
 
 - Let's select `DEPLOY TO VSPHERE`
-    ![]({{ site.url }}/assets/TKG-2.png)
+    ![]({{ site.url }}/assets/tkg/1.1/TKG-2.png)
 
 - Now provide the IaaS configuration. **NOTE** its preferred you provide the IP Address of vCenter here, as you might run into issues while provisioning the workload load clusters. If the DNS doesn't resolve, the workload clusters will end up with a status `createStalled`.
 
 - Once you've filled in the vCenter details, click on connect, to specify the Datacenter and the SSH Public Key. For the public key, `cat tkg.pub` and place the contents in the UI, and click Next
 
-    ![]({{ site.url }}/assets/TKG-3.png)
+    ![]({{ site.url }}/assets/tkg/1.1/TKG-3.png)
 
 - Here select the Instance Type you wish to create your control plane with. I will choose Development and `medium` type. Name the Management Cluster `tkg`, and select the API SERVER LOAD BALANCER template that was uploaded earlier. Click Next
 
-    ![]({{ site.url }}/assets/TKG-4.png)
+    ![]({{ site.url }}/assets/tkg/1.1/TKG-4.png)
 
 - Under Resources Tab, select the VM Folder, Datastore and the cluster or resource pool, you want to use for deploying the management cluster, and click Next
 
-    ![]({{ site.url }}/assets/TKG-5.png)
+    ![]({{ site.url }}/assets/tkg/1.1/TKG-5.png)
 
 - Under Kubernetes Network Settings, select the routable network that has DHCP enabled for the Network Name. The Cluster Service CIDR and Cluster Pod CIDR can be left to defaults unless you need to change due to overlapping networks. Click Next
 
-    ![]({{ site.url }}/assets/TKG-6.png)
+    ![]({{ site.url }}/assets/tkg/1.1/TKG-6.png)
 
 - Specify the Kubernetes OS Image that was uploaded earlier, and click Next
 
-    ![]({{ site.url }}/assets/TKG-7.png)
+    ![]({{ site.url }}/assets/tkg/1.1/TKG-7.png)
 
 - Let's review the configuration, and the click on `DEPLOY MANAGEMENT CLUSTER`
 
-    ![]({{ site.url }}/assets/TKG-8.png)
+    ![]({{ site.url }}/assets/tkg/1.1/TKG-8.png)
 
 - Once you click on the deployment, a `kind` cluster is created on the local docker, which can be verified by opening up a new terminal and querying `docker ps`
 
-    ![]({{ site.url }}/assets/TKG-9.png)
+    ![]({{ site.url }}/assets/tkg/1.1/TKG-9.png)
 
 - This process of creating the management cluster would take a few minutes to spin up the vms on vSphere.
 
-    ![]({{ site.url }}/assets/TKG-10.png)
+    ![]({{ site.url }}/assets/tkg/1.1/TKG-10.png)
 
 ### Deploying workload cluster
 
