@@ -1,27 +1,37 @@
 ---
 layout: post
-title:  "vSphere 7 + Workload Management"
-date:   2020-07-28 5:00:00 -0600
-categories: tkg, vsphere 7, workload management, homelab
+title:  "vSphere 7 + Workload Management + HAProxy"
+date:   2020-11-18 5:00:00 -0600
+categories: tkg, vsphere 7, workload management, homelab, haproxy
 ---
 
-To enable Workload Management on vSphere 7, ensure the following steps are completed:
+To enable Workload Management on vSphere 7 and using HAProxy as the networking stack, ensure the following steps are completed:
 
-* Create a VDS `TEP`, without any port groups, and attach the desired hosts to it, allocate the `vmnic1`
-* Setup NSX-T Management, Edge and prepare the TEP on the VDS
+* Create a private network port group in vSpgere, and attach to `vmnic1`
+* Setup HAProxy appliance by downloading, and inport the OVA from https://github.com/haproxytech/vmware-haproxy
+  - Attach the Management Network and Frontend Network to a routable network
+  - Attaching Workload Network to the prot group associate with the private network
+  - Allocate a `/28` CIDR block for Frontend/Load Balancer IPs
+
+  | Component | IP Address/CIDR |
+  | -- | -- |
+  | Management IP | 10.0.0.143 |
+  | Workload IP | 192.168.10.10 |
+  | Load Balancer Service IP Range | 10.0.0.128/28 |
+  | Supervisior Cluster IP Range | 10.0.0.144/28 |
+
 * Create a Tag on the storage/s that will be used for workload management
   - Click in vCenter > Storage
   - Select the storage and click on Actions > Tags & Custom Attributes > Assign Tag
   - Create a tag with the name `k8s` and Category name as `k8s` and select all
   - Assign the tag
-* Next create a `VM Storage Policies` by clicking in vCenter > `Policies and Profiles` > `VM Storage Policies`
+* Create a `VM Storage Policies` by clicking in vCenter > `Policies and Profiles` > `VM Storage Policies`
   - Click on `Create VM Storage Policy`
   - Name: `k8s-storage`
   - Enable tag based placement rules
   - Tag Category: `k8s` and Tags `k8s`
   - Storage compatibility: should see all the storages
 * On the cluster, enable DRS and HA. Ensure the vmk0 is enabled for vMotion & vSAN
-* Deploy `T0-Router`
 
 * Download and host the content library on linux box script
   ```
@@ -77,50 +87,63 @@ To enable Workload Management on vSphere 7, ensure the following steps are compl
 
 * If all the above is done, then click on vCenter > Menu > Workload Management
   - Click Enable, and you should see the clusters in the compatible list
+    - vCenter Server and Network: `vCenter Server Network`
     - Cluster: `WORKLOAD`
     - Size: `Tiny`
-    - Management `Network`
-      - Network: `VM Network`
-      - Start IP Address: `10.0.0.101`
-      - Subnet Mask: `255.255.252.0`
-      - Gateway: `10.0.0.1`
-      - DNS Server: `10.0.0.14`
-      - NTP Server: `10.0.0.12`
-      - DNS Search Domain: `homelab.io`
-    - Workload Network
-      - vSphere Distributed Switch: `TEP`
-      - Edge Cluster: `edge-cluster`
-      - API Server endpoint FQDN: `supervisor.homelab.io`
-      - DNS Server: `10.0.0.14`
-      - Pod CIDRs: `10.244.0.0/21`
-      - Service CIDRs: `10.96.0.0/24`
-      - Ingress CIRDs: `10.0.0.128/27`
-      - Egress CIDRs: `10.0.0.192/27`
     - Storage:
       - Control Plane Node: `k8s-storage`
-      - Ephemeral Disks: `k8s-storage`
-      - Image Cache: `k8s-storage`
+    - Load Balancer:
+      - Name: `haproxy`
+      - Type: `HA Proxy`
+      - Data plane API Address: `10.0.0.143:5556`
+      - User name: `admin`
+      - Password: `password`
+      - IP Address Ranges for Virtual Servers: `10.0.0.128-10.0.0.142`
+      - Server Certificate: Get the value by running the command > `echo | openssl s_client -showcerts -connect 10.0.0.143:5556 2>/dev/null | openssl x509 -inform pem -text`
+    - Management Network:
+      - Network: `EDGE-UPLINK-PG`
+      - Start IP Address: `10.0.0.144`
+      - Subnet Mask: `255.255.252.0`
+      - Gateway: `10.0.0.1`
+      - DNS Server: `10.0.0.11`
+      - DNS Search Domain: `homelab.io`
+      - NTP Server: `10.0.0.12`
+    - Workload Network:
+      - IP address for Services: `10.96.0.0/24`
+      - DNS Servers: `10.0.0.11`
+      - Workload Network:
+        - Name: `workload-network`
+        - Prot Group: `TKG`
+        - Gateway: `192.168.10.1`
+        - Subnet: `255.255.254.0`
+        - IP Address Ranges: `192.168.10.20-192.168.10.255`
+    - TKG Configuration:
+      - Content Library: `k8s`
     - Review and apply
 
-    ![]({{ site.url }}/assets/v7-k8s/k8s-1.png)
+    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-1.png)
     
-    ![]({{ site.url }}/assets/v7-k8s/k8s-2.png)
+    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-2.png)
 
-    ![]({{ site.url }}/assets/v7-k8s/k8s-3.png)
+    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-3.png)
 
-    ![]({{ site.url }}/assets/v7-k8s/k8s-4.png)
+    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-4.png)
 
-    ![]({{ site.url }}/assets/v7-k8s/k8s-5.png)
+    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-5.png)
 
-    ![]({{ site.url }}/assets/v7-k8s/k8s-6.png)
+    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-6.png)
 
-    ![]({{ site.url }}/assets/v7-k8s/k8s-7.png)
+    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-7.png)
 
-    ![]({{ site.url }}/assets/v7-k8s/k8s-8.png)
+    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-8.png)
 
-    ![]({{ site.url }}/assets/v7-k8s/k8s-9.png)
+    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-9.png)
 
-    ![]({{ site.url }}/assets/v7-k8s/k8s-10.png)
+    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-10.png)
+
+    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-11.png)
+
+    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-12.png)
 
 * To view the logs of the ongoing activities:
 
@@ -130,23 +153,19 @@ To enable Workload Management on vSphere 7, ensure the following steps are compl
 > tail -f /var/log/vmware/wcp/wcpsvc.logtail -f /var/log/vmware/> wcp/wcpsvc.log
 > ```
 
-* Click on the Cluster `WORKLOAD` > Configure > Namespaces > Image Registry > Enable Harbor, and select the `k8s-storage`. This will provision a harbor instance
-
-  ![]({{ site.url }}/assets/v7-k8s/k8s-11.png)
-
-* Click on the Cluster `WORKLOAD` > Configure > Namespaces > General > Add Library > `k8s-storage`
-
 * Create a namespace `k8s1` using the Workload Management
 
-  ![]({{ site.url }}/assets/v7-k8s/k8s-12.png)
+  ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-14.png)
 
-  ![]({{ site.url }}/assets/v7-k8s/k8s-13.png)
+  ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-15.png)
+
+  ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-16.png)
 
 * Download the kubectl vsphere plugin, by connecting to the supervisor cluster. Click on the `k8s1` and on summary > status, click on `Open` link to CLI tools. Download the cli and put it in the path
 
-  ![]({{ site.url }}/assets/v7-k8s/k8s-14.png)
+  ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-13.png)
 
-* Next connect to the supervisor cluster `k vsphere login --server=https://10.0.0.129/ --insecure-skip-tls-verify --vsphere-username=administrator@homelab.io` and login as administrator
+* Next connect to the supervisor cluster `k vsphere login --server=https://10.0.0.128/ --insecure-skip-tls-verify --vsphere-username=administrator@homelab.io` and login as administrator
 `k config use-context k8s1`
 
 * List all the k8s versions available
@@ -161,33 +180,34 @@ To enable Workload Management on vSphere 7, ensure the following steps are compl
   ob-16897056-photon-3-k8s-v1.16.14---vmware.1-tkg.1.ada4837   v1.16.14+vmware.1-tkg.1.ada4837   vmwarePhoton64Guest
   ob-16924026-photon-3-k8s-v1.18.5---vmware.1-tkg.1.c40d30d    v1.18.5+vmware.1-tkg.1.c40d30d    vmwarePhoton64Guest
   ob-16924027-photon-3-k8s-v1.17.11---vmware.1-tkg.1.15f1e18   v1.17.11+vmware.1-tkg.1.15f1e18   vmwarePhoton64Guest
+  ob-17010758-photon-3-k8s-v1.17.11---vmware.1-tkg.2.ad3d374   v1.17.11+vmware.1-tkg.2.ad3d374   vmwarePhoton64Guest
   ```
 
-  ![]({{ site.url }}/assets/v7-k8s/k8s-15.png)
+  ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-15.png)
 
 * Create a cluster yaml and then run `k create -f cluster.yaml`
   ```
   apiVersion: run.tanzu.vmware.com/v1alpha1
   kind: TanzuKubernetesCluster
   metadata:
-      name: k8s1-cluster
+      name: k8s1-cluster-1
       namespace: k8s1
   spec:
     topology:
         controlPlane:
             count: 3
-            class: best-effort-xsmall
+            class: best-effort-xsmall # https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-7351EEFF-4EF0-468F-A19B-6CEA40983D3D.html
             storageClass: k8s-storage
         workers:
             count: 3
-            class: best-effort-xsmall
+            class: best-effort-xsmall # https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-7351EEFF-4EF0-468F-A19B-6CEA40983D3D.html
             storageClass: k8s-storage
     distribution:
-          version: v1.17.8         
+          version: v1.18.5
     settings:
           network:
             cni:
-                name: calico
+                name: antrea
             services:
               cidrBlocks: ["198.51.100.0/12"]
             pods:
@@ -195,7 +215,8 @@ To enable Workload Management on vSphere 7, ensure the following steps are compl
   ```
 
   ```
-  ~/D/g/r/tkg ❯❯❯ k apply -f cluster.yaml
+  k apply -f cluster.yaml
+
   tanzukubernetescluster.run.tanzu.vmware.com/k8s1-cluster created
   ```
 
@@ -203,9 +224,9 @@ To enable Workload Management on vSphere 7, ensure the following steps are compl
 
 * After the cluster creation is complete, you should see
   ```
-  k get TanzuKubernetesCluster 
+  k get TanzuKubernetesCluster
   NAME           CONTROL PLANE   WORKER   DISTRIBUTION                     AGE     PHASE
-  k8s1-cluster   3               3        v1.17.8+vmware.1-tkg.1.5417466   9m24s   running
+  k8s1-cluster-1   3               3        v1.17.8+vmware.1-tkg.1.5417466   9m24s   running
   ```
 
-* Finally `k vsphere login --server=https://10.0.0.129/ --insecure-skip-tls-verify --vsphere-username=administrator@homelab.io --tanzu-kubernetes-cluster-namespace=k8s1 --tanzu-kubernetes-cluster-name=k8s1-cluster`
+* Finally `k vsphere login --server=https://10.0.0.128/ --insecure-skip-tls-verify --vsphere-username=administrator@homelab.io --tanzu-kubernetes-cluster-namespace=k8s1 --tanzu-kubernetes-cluster-name=k8s1-cluster-1`
