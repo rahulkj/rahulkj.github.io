@@ -7,10 +7,10 @@ categories: tkg, vsphere 7, workload management, homelab, haproxy
 
 To enable Workload Management on vSphere 7 and using HAProxy as the networking stack, ensure the following steps are completed:
 
-* Create a private network port group in vSpgere, and attach to `vmnic1`
-* Setup HAProxy appliance by downloading, and inport the OVA from https://github.com/haproxytech/vmware-haproxy
+* Create a private network port group in vSphere, and attach to `vmnic1`
+* Setup HAProxy appliance by downloading, and import the OVA from https://github.com/haproxytech/vmware-haproxy
   - Attach the Management Network and Frontend Network to a routable network
-  - Attaching Workload Network to the prot group associate with the private network
+  - Attaching Workload Network to the port group associate with the private network
   - Allocate a `/28` CIDR block for Frontend/Load Balancer IPs
 
   | Component | IP Address/CIDR |
@@ -191,8 +191,6 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
   ob-17010758-photon-3-k8s-v1.17.11---vmware.1-tkg.2.ad3d374   v1.17.11+vmware.1-tkg.2.ad3d374   vmwarePhoton64Guest
   ```
 
-  ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-15.png)
-
 * Create a cluster yaml and then run `k create -f cluster.yaml`
   ```
   apiVersion: run.tanzu.vmware.com/v1alpha1
@@ -236,5 +234,7 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
   NAME           CONTROL PLANE   WORKER   DISTRIBUTION                     AGE     PHASE
   k8s1-cluster-1   3               3        v1.18.5+vmware.1-tkg.1.c40d30d   9m24s   running
   ```
+
+  ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-17.png)
 
 * Finally `k vsphere login --server=https://10.0.0.128/ --insecure-skip-tls-verify --vsphere-username=administrator@homelab.io --tanzu-kubernetes-cluster-namespace=k8s1 --tanzu-kubernetes-cluster-name=k8s1-cluster-1`
