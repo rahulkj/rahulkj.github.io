@@ -88,10 +88,22 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
 * If all the above is done, then click on vCenter > Menu > Workload Management
   - Click Enable, and you should see the clusters in the compatible list
     - vCenter Server and Network: `vCenter Server Network`
+      
+      ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-1.png)
+
     - Cluster: `WORKLOAD`
+      
+      ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-2.png)
+
     - Size: `Tiny`
+      
+      ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-3.png)
+
     - Storage:
       - Control Plane Node: `k8s-storage`
+
+      ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-4.png)
+
     - Load Balancer:
       - Name: `haproxy`
       - Type: `HA Proxy`
@@ -100,6 +112,9 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
       - Password: `password`
       - IP Address Ranges for Virtual Servers: `10.0.0.128-10.0.0.142`
       - Server Certificate: Get the value by running the command > `echo | openssl s_client -showcerts -connect 10.0.0.143:5556 2>/dev/null | openssl x509 -inform pem -text`
+      
+      ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-5.png)
+
     - Management Network:
       - Network: `EDGE-UPLINK-PG`
       - Start IP Address: `10.0.0.144`
@@ -108,6 +123,9 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
       - DNS Server: `10.0.0.11`
       - DNS Search Domain: `homelab.io`
       - NTP Server: `10.0.0.12`
+      
+      ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-6.png)
+
     - Workload Network:
       - IP address for Services: `10.96.0.0/24`
       - DNS Servers: `10.0.0.11`
@@ -117,33 +135,23 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
         - Gateway: `192.168.10.1`
         - Subnet: `255.255.254.0`
         - IP Address Ranges: `192.168.10.20-192.168.10.255`
+
+      ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-7.png)
+
+      ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-8.png)
+
     - TKG Configuration:
       - Content Library: `k8s`
+  
+      ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-9.png)
+
     - Review and apply
+      
+      ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-10.png)
 
-    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-1.png)
-    
-    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-2.png)
+      ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-11.png)
 
-    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-3.png)
-
-    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-4.png)
-
-    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-5.png)
-
-    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-6.png)
-
-    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-7.png)
-
-    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-8.png)
-
-    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-9.png)
-
-    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-10.png)
-
-    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-11.png)
-
-    ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-12.png)
+      ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-12.png)
 
 * To view the logs of the ongoing activities:
 
