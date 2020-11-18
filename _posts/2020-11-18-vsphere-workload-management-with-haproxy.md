@@ -226,7 +226,7 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
   ```
   k get TanzuKubernetesCluster
   NAME           CONTROL PLANE   WORKER   DISTRIBUTION                     AGE     PHASE
-  k8s1-cluster-1   3               3        v1.17.8+vmware.1-tkg.1.5417466   9m24s   running
+  k8s1-cluster-1   3               3        v1.18.5+vmware.1-tkg.1.c40d30d   9m24s   running
   ```
 
 * Finally `k vsphere login --server=https://10.0.0.128/ --insecure-skip-tls-verify --vsphere-username=administrator@homelab.io --tanzu-kubernetes-cluster-namespace=k8s1 --tanzu-kubernetes-cluster-name=k8s1-cluster-1`
