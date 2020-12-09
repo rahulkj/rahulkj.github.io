@@ -196,28 +196,28 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
   apiVersion: run.tanzu.vmware.com/v1alpha1
   kind: TanzuKubernetesCluster
   metadata:
-      name: k8s1-cluster-1
-      namespace: k8s1
+    name: k8s1-cluster-1
+    namespace: k8s1
   spec:
     topology:
-        controlPlane:
-            count: 3
-            class: best-effort-xsmall # https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-7351EEFF-4EF0-468F-A19B-6CEA40983D3D.html
-            storageClass: k8s-storage
-        workers:
-            count: 3
-            class: best-effort-xsmall # https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-7351EEFF-4EF0-468F-A19B-6CEA40983D3D.html
-            storageClass: k8s-storage
+      controlPlane:
+        count: 3
+        class: best-effort-xsmall # https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-7351EEFF-4EF0-468F-A19B-6CEA40983D3D.html
+        storageClass: k8s-storage
+      workers:
+        count: 3
+        class: best-effort-xsmall # https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-7351EEFF-4EF0-468F-A19B-6CEA40983D3D.html
+        storageClass: k8s-storage
     distribution:
-          version: v1.18.5
+      version: v1.18.5
     settings:
-          network:
-            cni:
-                name: antrea
-            services:
-              cidrBlocks: ["198.51.100.0/12"]
-            pods:
-              cidrBlocks: ["192.0.2.0/16"]
+      network:
+        cni:
+            name: antrea
+        services:
+          cidrBlocks: ["198.51.100.0/12"]
+        pods:
+          cidrBlocks: ["192.0.2.0/16"]
   ```
 
   ```
