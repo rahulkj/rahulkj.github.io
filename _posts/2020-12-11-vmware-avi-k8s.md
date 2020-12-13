@@ -5,7 +5,7 @@ date:   2020-12-11 14:00:00 -0600
 categories: avi, k8s, vmware
 ---
 
-Plan your deployment topology
+Plan your deployment topology:
 
 | Network | VM Network | Subnet | IP Address Pool | Gateway |
 | --- | --- | --- | --- | --- |
@@ -56,26 +56,36 @@ Plan your deployment topology
   `govc import.ova -options=avi.json controller-20.1.2-9171.ova`
 
 * Once the VM is running in vCenter, access the AVI Controller VM IP in the browser `https://10.0.0.50`
+  
 * Create the Administrator Account
   ![]({{ site.url }}/assets/avi/avi-1.png)
+
 * Configure the system settings (DNS/NTP & Backup passphrase)
   ![]({{ site.url }}/assets/avi/avi-2.png)
+
 * Optionally configure the Email/SMTP
   ![]({{ site.url }}/assets/avi/avi-3.png)
+
 * Select vCenter as the Orchestrator Integration
   ![]({{ site.url }}/assets/avi/avi-4.png)
+
 * Specify the vCenter details with `Write` permissions. Skip SDN Integration
   ![]({{ site.url }}/assets/avi/avi-5.png)
+
 * Select the datacenter
   ![]({{ site.url }}/assets/avi/avi-6.png)
+
 * Select the Management network and define the IP Pool
   ![]({{ site.url }}/assets/avi/avi-7.png)
+
 * Select `NO` in tenant settings
   ![]({{ site.url }}/assets/avi/avi-8.png)
+
 * That's the initial setup
   ![]({{ site.url }}/assets/avi/avi-9.png)
 
 * Click on `Templates` in the top left beside `Applications`
+
 * Go into IPAM/DNS Profiles and create the following:
   - IPAM Profile
     - Name: k8s-ipam-profile
@@ -104,6 +114,7 @@ Plan your deployment topology
 * `helm repo add ako https://avinetworks.github.io/avi-helm-charts/charts/stable/ako`
 
 * Download and modify the ako values.yml from [here](https://github.com/avinetworks/avi-helm-charts/blob/master/charts/stable/ako/values.yaml)
+
 * `helm install ako/ako --generate-name --version 1.2.1 -f values.yaml -n avi-system`
 
 * Deploy a test workload on the k8s cluster
