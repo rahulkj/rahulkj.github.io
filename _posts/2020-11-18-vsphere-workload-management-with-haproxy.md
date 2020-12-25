@@ -111,7 +111,7 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
       - User name: `admin`
       - Password: `password`
       - IP Address Ranges for Virtual Servers: `10.0.0.144-10.0.0.159`
-      - Server Certificate: Get the value by running the command > `echo | openssl s_client -showcerts -connect 10.0.0.143:5556 2>/dev/null | openssl x509 -inform pem -text`
+      - Server Certificate: Get the value by running the command > `echo | openssl s_client -showcerts -connect 10.0.0.44:5556 2>/dev/null | openssl x509 -inform pem -text`
       
       ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-5.png)
 
