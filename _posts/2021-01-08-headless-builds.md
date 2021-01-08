@@ -5,7 +5,7 @@ date:   2021-01-08 16:00:00 -0600
 categories: k8s, buildah, skopeo, containerd
 ---
 
-I was looking for options on how I could build my container images, without install docker on my linux machines. I was introduced to the https://github.com/containers repository that is a holy grail of awesome tools for dealing with containers.
+I was looking for options on how I could build my container images, without installing docker engine on my linux machines. I was introduced to the https://github.com/containers repository that is a holy grail of awesome tools for dealing with containers.
 
 Once such tool that can be used to build images is [buildah](https://github.com/containers/buildah). Easy to install and use.
 
