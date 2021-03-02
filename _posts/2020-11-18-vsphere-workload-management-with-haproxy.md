@@ -15,10 +15,10 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
 
   | Component | IP Address/CIDR |
   | -- | -- |
-  | Management IP | 10.0.0.44 |
+  | Management IP / HA Proxy IP | 172.16.0.64 |
   | Workload IP | 192.168.10.10 |
-  | Load Balancer Service IP Range | 10.0.0.144/28 |
-  | Supervisior Cluster IP Range | 10.0.0.160/28 |
+  | Load Balancer Service IP Range | 172.16.0.144/28 |
+  | Supervisior Cluster IP Range | 172.16.0.160/28 |
 
 * Create a Tag on the storage/s that will be used for workload management
   - Click in vCenter > Storage
@@ -107,28 +107,28 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
     - Load Balancer:
       - Name: `haproxy`
       - Type: `HA Proxy`
-      - Data plane API Address: `10.0.0.44:5556`
+      - Data plane API Address: `172.16.0.64:5556`
       - User name: `admin`
       - Password: `password`
-      - IP Address Ranges for Virtual Servers: `10.0.0.144-10.0.0.159`
-      - Server Certificate: Get the value by running the command > `echo | openssl s_client -showcerts -connect 10.0.0.44:5556 2>/dev/null | openssl x509 -inform pem -text`
+      - IP Address Ranges for Virtual Servers: `172.16.0.144-172.16.0.159`
+      - Server Certificate: Get the value by running the command > `echo | openssl s_client -showcerts -connect 172.16.0.64:5556 2>/dev/null | openssl x509 -inform pem -text`
       
       ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-5.png)
 
     - Management Network:
       - Network: `EDGE-UPLINK-PG`
-      - Start IP Address: `10.0.0.160`
+      - Start IP Address: `172.16.0.160`
       - Subnet Mask: `255.255.252.0`
-      - Gateway: `10.0.0.1`
-      - DNS Server: `10.0.0.11`
+      - Gateway: `172.16.0.1`
+      - DNS Server: `172.16.0.30,172.16.0.31`
       - DNS Search Domain: `homelab.io`
-      - NTP Server: `10.0.0.12`
+      - NTP Server: `172.16.0.22`
       
       ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-6.png)
 
     - Workload Network:
       - IP address for Services: `10.96.0.0/24`
-      - DNS Servers: `10.0.0.11`
+      - DNS Servers: `172.16.0.30,172.16.0.31`
       - Workload Network:
         - Name: `workload-network`
         - Prot Group: `TKG`
@@ -173,7 +173,7 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
 
   ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-13.png)
 
-* Next connect to the supervisor cluster `k vsphere login --server=https://10.0.0.144/ --insecure-skip-tls-verify --vsphere-username=administrator@homelab.io` and login as administrator
+* Next connect to the supervisor cluster `k vsphere login --server=https://172.16.0.144/ --insecure-skip-tls-verify --vsphere-username=administrator@homelab.io` and login as administrator
 `k config use-context k8s1`
 
 * List all the k8s versions available
@@ -237,4 +237,4 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
 
   ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-17.png)
 
-* Finally `k vsphere login --server=https://10.0.0.144/ --insecure-skip-tls-verify --vsphere-username=administrator@homelab.io --tanzu-kubernetes-cluster-namespace=k8s1 --tanzu-kubernetes-cluster-name=k8s1-cluster-1`
+* Finally `k vsphere login --server=https://172.16.0.144/ --insecure-skip-tls-verify --vsphere-username=administrator@homelab.io --tanzu-kubernetes-cluster-namespace=k8s1 --tanzu-kubernetes-cluster-name=k8s1-cluster-1`
