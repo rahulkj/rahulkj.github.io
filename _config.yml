@@ -28,7 +28,7 @@ twitter_username: rahulkj
 github_username:  rahulkj
 
 # Build settings
-theme: minima
+theme: jekyll-theme-modernist
 plugins:
   - jekyll-feed
 
