@@ -9,8 +9,8 @@ Plan your deployment topology:
 
 | Network | VM Network | Subnet | IP Address Pool | Gateway |
 | --- | --- | --- | --- | --- |
-| AVI Controller | EGDE-UPLINK-PG | 10.0.0.0/22 | 10.0.0.43 | 10.0.0.1 |
-| Management Network | EGDE-UPLINK-PG | 10.0.0.0/22 | 10.0.0.176-10.0.0.191 | 10.0.0.1 |
+| AVI Controller | EGDE-UPLINK-PG | 172.16.0.0/22 | 172.16.0.63 | 172.16.0.1 |
+| Management Network | EGDE-UPLINK-PG | 172.16.0.0/22 | 172.16.0.176-172.16.0.191 | 172.16.0.1 |
 
 * Download and import the OVA using `govc` if you want to use the cli
 
@@ -22,7 +22,7 @@ Plan your deployment topology:
     "PropertyMapping": [
       {
         "Key": "avi.mgmt-ip.CONTROLLER",
-        "Value": "10.0.0.43"          <----- CHANGE THIS
+        "Value": "172.16.0.63"          <----- CHANGE THIS
       },
       {
         "Key": "avi.mgmt-mask.CONTROLLER",
@@ -30,7 +30,7 @@ Plan your deployment topology:
       },
       {
         "Key": "avi.default-gw.CONTROLLER",
-        "Value": "10.0.0.1"           <----- CHANGE THIS
+        "Value": "172.16.0.1"           <----- CHANGE THIS
       },
       {
         "Key": "avi.sysadmin-public-key.CONTROLLER",
@@ -55,7 +55,7 @@ Plan your deployment topology:
 
   `govc import.ova -options=avi.json controller-20.1.2-9171.ova`
 
-* Once the VM is running in vCenter, access the AVI Controller VM IP in the browser `https://10.0.0.43`
+* Once the VM is running in vCenter, access the AVI Controller VM IP in the browser `https://172.16.0.43`
   
 * Create the Administrator Account
   ![]({{ site.url }}/assets/avi/avi-1.png)
