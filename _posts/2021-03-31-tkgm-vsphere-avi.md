@@ -11,8 +11,8 @@ categories: tkg, avi, vsphere, k8s, homelab
 | --- | --- | --- | --- | --- |
 | AVI Controller | EGDE-UPLINK-PG | 172.16.0.0/22 | 172.16.0.63 | 172.16.0.1 |
 | Management Network | EGDE-UPLINK-PG | 172.16.0.0/22 | 172.16.0.176-172.16.0.191 | 172.16.0.1 |
-| Management Cluster | EGDE-UPLINK-PG | 172.16.0.0/22 | 172.16.0.172 | 172.16.0.1 |
-| k8s1 Cluster | EGDE-UPLINK-PG | 172.16.0.0/22 | 172.16.0.173 | 172.16.0.1 |
+| Management Cluster | EGDE-UPLINK-PG | 172.16.0.0/22 | 172.16.0.192 | 172.16.0.1 |
+| k8s1 Cluster | EGDE-UPLINK-PG | 172.16.0.0/22 | 172.16.0.193 | 172.16.0.1 |
 
 
 ## Install and configure AVI Load Balancer
