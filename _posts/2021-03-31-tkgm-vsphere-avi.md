@@ -129,18 +129,20 @@ categories: tkg, avi, vsphere, k8s, homelab
 * The official documantation is [here](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid/index.html)
 
 * Once downloaded tanzu-cli-bundle-darwin-amd64.tar, untar the contents into a folder, and add it into your `PATH`
-```
-tar xf tanzu-cli-bundle-darwin-amd64.tar cli/
 
-cp cli/core/v1.3.0/tanzu-core-darwin_amd64 /usr/local/bin/tanzu
+    ```
+    tar xf tanzu-cli-bundle-darwin-amd64.tar cli/
 
-chmod +x /usr/local/bin/tanzu
-```
+    cp cli/core/v1.3.0/tanzu-core-darwin_amd64 /usr/local/bin/tanzu
+
+    chmod +x /usr/local/bin/tanzu
+    ```
 
 * Install all the plugins that came in the tarball
-```
-tanzu plugin install --local cli all
-```
+
+    ```
+    tanzu plugin install --local cli all
+    ```
 
 * Download the Kubernetes OVA/s 1.20.x, import the OVA/s, and convert them into templates
 
@@ -364,6 +366,7 @@ Goal is to deploy a test application, and access it via the LoadBalancer IP, tha
     ```
 
 * Next, lets deploy this application into the `k8s1` cluster:
+
     ```
     k apply -f deployment.yaml
     
@@ -375,6 +378,7 @@ Goal is to deploy a test application, and access it via the LoadBalancer IP, tha
 * During this process, if you notice that the service is taking a while to get a external ip, then the reason would be that avi controller is provisioning Service Engines in the background, to handle the traffic to the pods
 
 * Query again for the services:
+
     ```
     k get svc
     NAME             TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)        AGE
