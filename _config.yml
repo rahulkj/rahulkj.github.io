@@ -28,7 +28,7 @@ twitter_username: rahulkj
 github_username:  rahulkj
 
 # Build settings
-theme: jekyll-theme-cayman
+theme: jekyll-theme-minimal
 plugins:
   - jekyll-feed
 
