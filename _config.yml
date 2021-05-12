@@ -29,3 +29,5 @@ github_username:  rahulkj
 
 # Build settings
 theme: minima
+plugins:
+  - jekyll-feed
