@@ -54,7 +54,7 @@ To enable Workload Management on vSphere 7, ensure the following steps are compl
     popd
   done
   ```
-* Install nginx on `ubuntu.homelab.io` and set the port to listen on 9090, update the /etc/nginx/sites-available/default
+* Install nginx on `ubuntu.cloudlab.local` and set the port to listen on 9090, update the /etc/nginx/sites-available/default
   ```
   server {
     listen 9090 default_server;
@@ -73,7 +73,7 @@ To enable Workload Management on vSphere 7, ensure the following steps are compl
   }
   ```
 * Setup content Library by clicking on vCenter > Menu > Content Libraries
-  - Create one with the name `k8s` and  Subscribed content library: `http://ubuntu.homelab.io:9090/vmware/content/lib.json`
+  - Create one with the name `k8s` and  Subscribed content library: `http://ubuntu.cloudlab.local:9090/vmware/content/lib.json`
 
 * If all the above is done, then click on vCenter > Menu > Workload Management
   - Click Enable, and you should see the clusters in the compatible list
@@ -86,11 +86,11 @@ To enable Workload Management on vSphere 7, ensure the following steps are compl
       - Gateway: `10.0.0.1`
       - DNS Server: `10.0.0.14`
       - NTP Server: `10.0.0.12`
-      - DNS Search Domain: `homelab.io`
+      - DNS Search Domain: `cloudlab.local`
     - Workload Network
       - vSphere Distributed Switch: `TEP`
       - Edge Cluster: `edge-cluster`
-      - API Server endpoint FQDN: `supervisor.homelab.io`
+      - API Server endpoint FQDN: `supervisor.cloudlab.local`
       - DNS Server: `10.0.0.14`
       - Pod CIDRs: `10.244.0.0/21`
       - Service CIDRs: `10.96.0.0/24`
@@ -125,7 +125,7 @@ To enable Workload Management on vSphere 7, ensure the following steps are compl
 * To view the logs of the ongoing activities:
 
 > ``` 
-> ssh root@vcenter.homelab.io
+> ssh root@vcenter.cloudlab.local
 > shell
 > tail -f /var/log/vmware/wcp/wcpsvc.logtail -f /var/log/vmware/> wcp/wcpsvc.log
 > ```
@@ -146,7 +146,7 @@ To enable Workload Management on vSphere 7, ensure the following steps are compl
 
   ![]({{ site.url }}/assets/v7-k8s/k8s-14.png)
 
-* Next connect to the supervisor cluster `k vsphere login --server=https://10.0.0.129/ --insecure-skip-tls-verify --vsphere-username=administrator@homelab.io` and login as administrator
+* Next connect to the supervisor cluster `k vsphere login --server=https://10.0.0.129/ --insecure-skip-tls-verify --vsphere-username=administrator@cloudlab.local` and login as administrator
 `k config use-context k8s1`
 
 * List all the k8s versions available
@@ -208,4 +208,4 @@ To enable Workload Management on vSphere 7, ensure the following steps are compl
   k8s1-cluster   3               3        v1.17.8+vmware.1-tkg.1.5417466   9m24s   running
   ```
 
-* Finally `k vsphere login --server=https://10.0.0.129/ --insecure-skip-tls-verify --vsphere-username=administrator@homelab.io --tanzu-kubernetes-cluster-namespace=k8s1 --tanzu-kubernetes-cluster-name=k8s1-cluster`
+* Finally `k vsphere login --server=https://10.0.0.129/ --insecure-skip-tls-verify --vsphere-username=administrator@cloudlab.local --tanzu-kubernetes-cluster-namespace=k8s1 --tanzu-kubernetes-cluster-name=k8s1-cluster`
