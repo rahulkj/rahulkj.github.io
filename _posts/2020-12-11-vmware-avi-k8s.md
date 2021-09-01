@@ -9,8 +9,8 @@ Plan your deployment topology:
 
 | Network | VM Network | Subnet | IP Address Pool | Gateway |
 | --- | --- | --- | --- | --- |
-| AVI Controller | EGDE-UPLINK-PG | 172.16.0.0/22 | 172.16.0.63 | 172.16.0.1 |
-| Management Network | EGDE-UPLINK-PG | 172.16.0.0/22 | 172.16.0.176-172.16.0.191 | 172.16.0.1 |
+| AVI Controller | EGDE-UPLINK-PG | 172.16.0.0/16 | 172.16.0.63 | 172.16.0.1 |
+| Management Network | EGDE-UPLINK-PG | 172.16.0.0/16 | 172.16.0.192 - 172.16.0.223 | 172.16.0.1 |
 
 * Download and import the OVA using `govc` if you want to use the cli
 
@@ -26,7 +26,7 @@ Plan your deployment topology:
       },
       {
         "Key": "avi.mgmt-mask.CONTROLLER",
-      "Value": "255.255.252.0"        <----- CHANGE THIS
+      "Value": "255.255.0.0"        <----- CHANGE THIS
       },
       {
         "Key": "avi.default-gw.CONTROLLER",

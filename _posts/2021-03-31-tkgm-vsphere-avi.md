@@ -9,10 +9,10 @@ categories: tkg, avi, vsphere, k8s, homelab
 
 | Network | VM Network | Subnet | IP Address Pool | Gateway |
 | --- | --- | --- | --- | --- |
-| AVI Controller | EGDE-UPLINK-PG | 172.16.0.0/22 | 172.16.0.63 | 172.16.0.1 |
-| Management Network | EGDE-UPLINK-PG | 172.16.0.0/22 | 172.16.0.176-172.16.0.191 | 172.16.0.1 |
-| Management Cluster | EGDE-UPLINK-PG | 172.16.0.0/22 | 172.16.0.192 | 172.16.0.1 |
-| k8s1 Cluster | EGDE-UPLINK-PG | 172.16.0.0/22 | 172.16.0.193 | 172.16.0.1 |
+| AVI Controller | EGDE-UPLINK-PG | 172.16.0.0/16 | 172.16.0.63 | 172.16.0.1 |
+| Management Network | EGDE-UPLINK-PG | 172.16.0.0/16 | 172.16.0.176-172.16.0.191 | 172.16.0.1 |
+| Management Cluster | EGDE-UPLINK-PG | 172.16.0.0/16 | 172.16.0.192 | 172.16.0.1 |
+| k8s1 Cluster | EGDE-UPLINK-PG | 172.16.0.0/16 | 172.16.0.193 | 172.16.0.1 |
 
 
 ## Install and configure AVI Load Balancer
@@ -31,7 +31,7 @@ categories: tkg, avi, vsphere, k8s, homelab
       },
       {
         "Key": "avi.mgmt-mask.CONTROLLER",
-      "Value": "255.255.252.0"        <----- CHANGE THIS
+      "Value": "255.255.0.0"        <----- CHANGE THIS
       },
       {
         "Key": "avi.default-gw.CONTROLLER",
@@ -173,7 +173,7 @@ categories: tkg, avi, vsphere, k8s, homelab
     - Cloud Name: `Default-Cloud`
     - Service Enginer Group Name: `Default-Group`
     - VIP Network Name: `EDGE-UPLINK-PG` <<-- Network that was used in the AVI setup that has the static IP's for the VIP
-    - VIP Network CIDR: `172.16.0.0/22`  <<-- Has to the same as what you defined during the AVI setup
+    - VIP Network CIDR: `172.16.0.0/16`  <<-- Has to the same as what you defined during the AVI setup
     - Controller Certificate Authority: <<-- Paste the public certificate for the controller here
 
     - Cluster Labels: <<-- Use this carefully, if you miss defining this label while creating the workload clusters, then those clusters will not have the ako pod created in that cluster

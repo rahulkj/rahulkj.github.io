@@ -17,8 +17,8 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
   | -- | -- |
   | Management IP / HA Proxy IP | 172.16.0.64 |
   | Workload IP | 192.168.10.10 |
-  | Load Balancer Service IP Range | 172.16.0.144/28 |
-  | Supervisior Cluster IP Range | 172.16.0.160/28 |
+  | Load Balancer Service IP Range | 172.16.0.160/27 |
+  | Supervisior Cluster IP Range | 172.16.0.224/29 |
 
 * Create a Tag on the storage/s that will be used for workload management
   - Click in vCenter > Storage
@@ -110,15 +110,15 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
       - Data plane API Address: `172.16.0.64:5556`
       - User name: `admin`
       - Password: `password`
-      - IP Address Ranges for Virtual Servers: `172.16.0.144-172.16.0.159`
+      - IP Address Ranges for Virtual Servers: `172.16.0.160-172.16.0.191`
       - Server Certificate: Get the value by running the command > `echo | openssl s_client -showcerts -connect 172.16.0.64:5556 2>/dev/null | openssl x509 -inform pem -text`
       
       ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-5.png)
 
     - Management Network:
       - Network: `EDGE-UPLINK-PG`
-      - Start IP Address: `172.16.0.160`
-      - Subnet Mask: `255.255.252.0`
+      - Start IP Address: `172.16.0.224`
+      - Subnet Mask: `255.255.0.0`
       - Gateway: `172.16.0.1`
       - DNS Server: `172.16.0.30,172.16.0.31`
       - DNS Search Domain: `cloudlab.local`
@@ -173,7 +173,7 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
 
   ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-13.png)
 
-* Next connect to the supervisor cluster `k vsphere login --server=https://172.16.0.144/ --insecure-skip-tls-verify --vsphere-username=administrator@cloudlab.local` and login as administrator
+* Next connect to the supervisor cluster `k vsphere login --server=https://172.16.0.160/ --insecure-skip-tls-verify --vsphere-username=administrator@cloudlab.local` and login as administrator
 `k config use-context k8s1`
 
 * List all the k8s versions available
