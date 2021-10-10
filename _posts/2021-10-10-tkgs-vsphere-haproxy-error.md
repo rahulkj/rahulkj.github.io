@@ -11,7 +11,7 @@ While provisioning a tkg cluster in vSphere, I ran into this error:
 
 > Error from server (unable to find a compatible full version matching version hint "1.21"): error when creating "cluster.yaml": admission webhook "version.mutating.tanzukubernetescluster.run.tanzu.vmware.com" denied the request: unable to find a compatible full version matching version hint "1.21"
 
-After a lot of debugging, I realized some of the content library templates were not completed cloned, due to which the deployment of k8s clusters was failing.
+After a lot of debugging, I realized some of the content library templates were not completely cloned, due to which the deployment of k8s clusters was failing.
 
 I manually selected the templates that had no ova's synchronized from the remote server, and then waited for the process was complete. Repeated the same step for all the other ova's.
 
