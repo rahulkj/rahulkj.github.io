@@ -17,7 +17,7 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
   | -- | -- |
   | Management IP / HA Proxy IP | 172.16.0.64 |
   | Workload IP | 192.168.10.10 |
-  | Load Balancer Service IP Range | 172.16.0.160/27 |
+  | Load Balancer Service IP Range | 172.16.0.129/26 |
   | Supervisior Cluster IP Range | 172.16.0.224/29 |
 
 * Create a Tag on the storage/s that will be used for workload management
@@ -107,11 +107,11 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
     - Load Balancer:
       - Name: `haproxy`
       - Type: `HA Proxy`
-      - Data plane API Address: `172.16.0.64:5556`
+      - Data plane API Address: `172.16.0.67:5556`
       - User name: `admin`
       - Password: `password`
-      - IP Address Ranges for Virtual Servers: `172.16.0.160-172.16.0.191`
-      - Server Certificate: Get the value by running the command > `echo | openssl s_client -showcerts -connect 172.16.0.64:5556 2>/dev/null | openssl x509 -inform pem -text`
+      - IP Address Ranges for Virtual Servers: `172.16.0.129-172.16.0.191`
+      - Server Certificate: Get the value by running the command > `echo | openssl s_client -showcerts -connect 172.16.0.67:5556 2>/dev/null | openssl x509 -inform pem -text`
       
       ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-5.png)
 
@@ -173,7 +173,7 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
 
   ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-13.png)
 
-* Next connect to the supervisor cluster `k vsphere login --server=https://172.16.0.160/ --insecure-skip-tls-verify --vsphere-username=administrator@cloudlab.local` and login as administrator
+* Next connect to the supervisor cluster `k vsphere login --server=https://172.16.0.129/ --insecure-skip-tls-verify --vsphere-username=administrator@cloudlab.local` and login as administrator
 `k config use-context k8s1`
 
 * List all the k8s versions available
@@ -209,7 +209,7 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
         class: best-effort-xsmall # https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-7351EEFF-4EF0-468F-A19B-6CEA40983D3D.html
         storageClass: k8s-storage
     distribution:
-      version: v1.18.5
+      version: v1.12.2
     settings:
       network:
         cni:
@@ -231,8 +231,8 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
 * After the cluster creation is complete, you should see
   ```
   k get TanzuKubernetesCluster
-  NAME           CONTROL PLANE   WORKER   DISTRIBUTION                     AGE     PHASE
-  k8s1-cluster-1   3               3        v1.18.5+vmware.1-tkg.1.c40d30d   9m24s   running
+  NAME   CONTROL PLANE   WORKER   TKR NAME                           AGE     READY   TKR COMPATIBLE   UPDATES AVAILABLE
+  dev    1               3        v1.21.2---vmware.1-tkg.1.ee25d55   6h44m   True    True
   ```
 
   ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-17.png)
