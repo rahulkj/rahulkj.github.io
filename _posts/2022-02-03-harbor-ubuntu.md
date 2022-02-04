@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Harbor Installation on Ubuntu"
-date:   2022-02-03 12:35:00 -0530
+date:   2022-02-03 16:51:00 -0600
 categories: harbor, vm, ubuntu
 ---
 
