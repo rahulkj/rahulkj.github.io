@@ -18,6 +18,11 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
+remote_theme: pages-themes/time-machine@v0.2.0
+plugins:
+- jekyll-remote-theme # add this line to the plugins list if you already have one
+- jekyll-feed
+
 title: myupbeat (blogs)
 email: rahulkj@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
@@ -28,6 +33,7 @@ twitter_username: rahulkj
 github_username:  rahulkj
 
 # Build settings
-theme: minima
-plugins:
-  - jekyll-feed
+#theme: minima
+#plugins:
+#  - jekyll-feed
+
