@@ -5,7 +5,7 @@ date:   2022-09-09 9:34:00 +0530
 categories: openssl, certificates
 ---
 
-If you are a Mac user, you must have noticed that you get an error with the cli (command line interface) tools written in golang, throw an execpetion:
+If you are a Mac user, you must have noticed that you get an error with the cli (command line interface) tools written in golang, throw an exception:
 
 `error: x509: "somehost" certificate is not standards compliant`
 
