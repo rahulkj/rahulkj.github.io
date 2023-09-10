@@ -64,7 +64,7 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
     popd
   done
   ```
-* Install nginx on `ubuntu.cloudlab.local` and set the port to listen on 9090, update the /etc/nginx/sites-available/default
+* Install nginx on `ubuntu.lab.int` and set the port to listen on 9090, update the /etc/nginx/sites-available/default
   ```
   server {
     listen 9090 default_server;
@@ -83,7 +83,7 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
   }
   ```
 * Setup content Library by clicking on vCenter > Menu > Content Libraries
-  - Create one with the name `k8s` and  Subscribed content library: `http://ubuntu.cloudlab.local:9090/vmware/content/lib.json`
+  - Create one with the name `k8s` and  Subscribed content library: `http://ubuntu.lab.int:9090/vmware/content/lib.json`
 
 * If all the above is done, then click on vCenter > Menu > Workload Management
   - Click Enable, and you should see the clusters in the compatible list
@@ -121,7 +121,7 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
       - Subnet Mask: `255.255.0.0`
       - Gateway: `172.16.0.1`
       - DNS Server: `172.16.0.30,172.16.0.31`
-      - DNS Search Domain: `cloudlab.local`
+      - DNS Search Domain: `lab.int`
       - NTP Server: `172.16.0.22`
       
       ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-6.png)
@@ -156,7 +156,7 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
 * To view the logs of the ongoing activities:
 
 > ``` 
-> ssh root@vcenter.cloudlab.local
+> ssh root@vcenter.lab.int
 > shell
 > tail -f /var/log/vmware/wcp/wcpsvc.logtail -f /var/log/vmware/> wcp/wcpsvc.log
 > ```
@@ -173,7 +173,7 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
 
   ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-13.png)
 
-* Next connect to the supervisor cluster `k vsphere login --server=https://172.16.0.129/ --insecure-skip-tls-verify --vsphere-username=administrator@cloudlab.local` and login as administrator
+* Next connect to the supervisor cluster `k vsphere login --server=https://172.16.0.129/ --insecure-skip-tls-verify --vsphere-username=administrator@lab.int` and login as administrator
 `k config use-context k8s1`
 
 * List all the k8s versions available
@@ -237,4 +237,4 @@ To enable Workload Management on vSphere 7 and using HAProxy as the networking s
 
   ![]({{ site.url }}/assets/v7-k8s-haproxy/k8s-haproxy-17.png)
 
-* Finally `k vsphere login --server=https://172.16.0.144/ --insecure-skip-tls-verify --vsphere-username=administrator@cloudlab.local --tanzu-kubernetes-cluster-namespace=k8s1 --tanzu-kubernetes-cluster-name=k8s1-cluster-1`
+* Finally `k vsphere login --server=https://172.16.0.144/ --insecure-skip-tls-verify --vsphere-username=administrator@lab.int --tanzu-kubernetes-cluster-namespace=k8s1 --tanzu-kubernetes-cluster-name=k8s1-cluster-1`

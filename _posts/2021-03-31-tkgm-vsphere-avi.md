@@ -60,7 +60,7 @@ categories: tkg, avi, vsphere, k8s, homelab
 
   `govc import.ova -options=avi.json controller-20.1.2-9171.ova`
 
-* Once the VM is running in vCenter, access the AVI Controller VM IP in the browser `https://172.16.0.43` or use the DNS record `https://avi.cloudlab.local`
+* Once the VM is running in vCenter, access the AVI Controller VM IP in the browser `https://172.16.0.43` or use the DNS record `https://avi.lab.int`
   
 * Create the Administrator Account
   ![]({{ site.url }}/assets/avi/avi-1.png)
@@ -105,7 +105,7 @@ categories: tkg, avi, vsphere, k8s, homelab
     - Avi Vantage DNS Configuration
       - Default Record TTL for all domains: `30`
       - Domain Name:
-        - `tkg.cloudlab.local`
+        - `tkg.lab.int`
   
   ![]({{ site.url }}/assets/avi/avi-10.png)
 
@@ -114,9 +114,9 @@ categories: tkg, avi, vsphere, k8s, homelab
   ![]({{ site.url }}/assets/avi/avi-11.png)
 
 * Click on `Templates` in the top left beside `Security` > `SSL/TLS Certificates` > `CREATE` > `Controller Certificate`
-    - Name: `avi.cloudlab.local`
-    - Common Name: `avi.cloudlab.local`
-    - Subject Alertnate Name (SAN): `avi.cloudlab.local`
+    - Name: `avi.lab.int`
+    - Common Name: `avi.lab.int`
+    - Subject Alertnate Name (SAN): `avi.lab.int`
 
     **NOTE: If you don't provide SAN, then the pod under the namespace `tkg-system-networking` in management cluster, will throw SSL validation errors**
 
@@ -167,7 +167,7 @@ categories: tkg, avi, vsphere, k8s, homelab
   ![]({{ site.url }}/assets/tkg/1.3/tkg-3.png)
 
 * VMware NSX Advanced Load Balancer
-    - Controller Host: `avi.cloudlab.local`
+    - Controller Host: `avi.lab.int`
     - Username: `admin`
     - Password: `password`
     - Cloud Name: `Default-Cloud`

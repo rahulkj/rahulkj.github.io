@@ -100,7 +100,7 @@ Plan your deployment topology:
     - Avi Vantage DNS Configuration
       - Default Record TTL for all domains: `30`
       - Domain Name:
-        - `avi.k8s1.pks.cloudlab.local`
+        - `avi.k8s1.pks.lab.int`
   
   ![]({{ site.url }}/assets/avi/avi-10.png)
 
