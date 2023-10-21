@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Install kubernetes on RaspberryPi 4 - 8GB"
+title:  "Install kubernetes on Raspberry Pi 4 - 8GB"
 date:   2023-10-20 10:23:00 +0530
 categories: kubernetes, application modernization, COTS
 ---
 
-## Disable swap memory on all raspberry pi's
+## Disable swap memory on all Raspberry pi's
 * Begin with disabling swap memory
 ```
 sudo swapoff -a
@@ -30,7 +30,7 @@ echo " console=serial0,115200 console=tty1 root=PARTUUID=58b06195-02 rootfstype=
 
 * Repeat this on all the nodes
 
-## Installing containerd and network plugins on all raspberry pi's
+## Installing containerd and network plugins on all Raspberry pi's
 
 * To begin with, we will need to install the required packaged for container runtime, networking and vxlan for flannel to work. To do this, run the following command:
 ```
@@ -52,7 +52,7 @@ sudo vi /etc/containerd/config.toml
 
 * Repeat this on all the nodes
 
-## Allow Iptables to see bridged traffic on all raspberry pi's
+## Allow Iptables to see bridged traffic on all Raspberry pi's
 According to the documentation, Kubernetes needs iptables to be configured to see bridged network traffic.
 
 ```
@@ -78,7 +78,7 @@ sudo sysctl --system
 
 * Repeat this on all the nodes
 
-## Install kubernetes cli's on all raspberry pi's
+## Install kubernetes cli's on all Raspberry pi's
 
 * Lets install the required cli's to setup kubernetes
 ```
@@ -116,7 +116,10 @@ kubeadm join <CONTROL-PLANE-IP>:6443 --token <TOKEN> \
 
 ### Install the CNI
 * We will need the CNI installed, and for this setup, we will setup flannel
-> kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+
+```
+kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+```
 
 * Note once this is done, check the pods and their status, they should all be in `Running` state, especially `coredns` pod
 
@@ -167,7 +170,7 @@ ingress-nginx-controller-admission   ClusterIP   10.110.94.219   <none>        4
 
 ## Now lets deploy the kubernetes dashboard
 
-Follow the documentation here: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+Follow the documentation [here](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
 
 * Deploying the dashboard
 ```
@@ -186,7 +189,7 @@ kubernetes-dashboard   NodePort   10.111.90.128   <none>        443:32438/TCP   
 
 Access the Web UI, and you will need to generate a token to login to the dashboard. Follow the instructions [here](https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md) to create a user and obtain a token.
 
-If you are reading this, they yay, you managed to setup your k8s cluster on your RPi's successfully.
+If you are reading this, they yay, you managed to setup your k8s cluster on your Raspberry Pi's successfully.
 
 Enjoy!
 
