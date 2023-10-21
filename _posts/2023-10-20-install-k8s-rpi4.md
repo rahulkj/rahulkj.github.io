@@ -7,7 +7,9 @@ categories: kubernetes, application modernization, COTS
 
 ## Disable swap memory on all raspberri pi's
 * Begin with disabling swap memory
-    > sudo swapoff -a
+```
+sudo swapoff -a
+```
 
 * Verify swap is disabled, run `free -m`, and validate the values for Swap
 ```
@@ -17,24 +19,34 @@ Swap:              0           0           0
 ```
 
 * Now lets save the cgroups and swap setting in our bootup scripts
-    > echo " cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1 swapaccount=1" | sudo tee -a  /boot/cmdline.txt
 
-    > echo " console=serial0,115200 console=tty1 root=PARTUUID=58b06195-02 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait cgroup_memory=1 cgroup_enable=memory swapaccount=1" | sudo tee -a /boot/firmware/cmdline.txt
+```
+echo " cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1 swapaccount=1" | sudo tee -a  /boot/cmdline.txt
+```
+
+```
+echo " console=serial0,115200 console=tty1 root=PARTUUID=58b06195-02 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait cgroup_memory=1 cgroup_enable=memory swapaccount=1" | sudo tee -a /boot/firmware/cmdline.txt
+```
 
 * Repeat this on all the nodes
 
 ## Installing containerd and network plugins on all raspberri pi's
 
 * To begin with, we will need to install the required packaged for container runtime, networking and vxlan for flannel to work. To do this, run the following command:
-    > sudo apt update &&  sudo apt install -y containerd containernetworking-plugins linux-modules-extra-raspi
-
+```
+sudo apt update &&  sudo apt install -y containerd containernetworking-plugins linux-modules-extra-raspi
+```
 
 * Once done, lets configure containerd to leverage cgroups. Do this, lets generate a default config
-    > sudo mkdir -p /etc/containerd
+```
+sudo mkdir -p /etc/containerd
 containerd config default | sudo tee /etc/containerd/config.toml
+```
 
 * Now lets tweak the configuration to use cgroups
-    > sudo vi /etc/containerd/config.toml
+```
+sudo vi /etc/containerd/config.toml
+```
 
 * Change `SystemdCgroup = false` to `SystemdCgroup = true` under `plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options`
 
@@ -60,17 +72,23 @@ EOF
 ```
 
 * Lets validate the configurations
-    > sudo sysctl --system
+```
+sudo sysctl --system
+```
 
 * Repeat this on all the nodes
 
 ## Install kubernetes cli's on all raspberri pi's
 
 * Lets install the required cli's to setup kubernetes
-    > sudo apt install -y kubelet kubeadm kubectl
+```
+sudo apt install -y kubelet kubeadm kubectl
+```
 
 * Lets pin these versions, so you can control the version updates when needed
-    > sudo apt-mark hold kubelet kubeadm kubectl
+```
+sudo apt-mark hold kubelet kubeadm kubectl
+```
 
 * Repeat this on all the nodes
 
@@ -114,7 +132,9 @@ kubeadm join <CONTROL-PLANE-IP>:6443 --token <TOKEN> \
 
 One this is executed, you can very your cluster status by running 
 
-> kubectl get nodes -o wide
+```
+kubectl get nodes -o wide
+```
 
 ```
 NAME   STATUS   ROLES           AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE       KERNEL-VERSION     CONTAINER-RUNTIME
@@ -125,13 +145,19 @@ pi-4   Ready    <none>          39h   v1.28.2   10.0.10.19   <none>        Ubunt
 ```
 
 ## Deploy nginx ingress controller
-> kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.9.3/deploy/static/provider/baremetal/deploy.yaml
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.9.3/deploy/static/provider/baremetal/deploy.yaml
+```
 
 * We need to change the service from ClusterIP to NodePort for our service, so update the service type by running
-> kubectl edit svc -n ingress-nginx ingress-nginx-controller
+```
+kubectl edit svc -n ingress-nginx ingress-nginx-controller
+```
 
 * Finally validate the service, and it should show as `NodePort`
-> kubectl describe svc -n ingress-nginx ingress-nginx-controller
+```
+kubectl describe svc -n ingress-nginx ingress-nginx-controller
+```
 
 ```
 NAME                                 TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
@@ -144,10 +170,14 @@ ingress-nginx-controller-admission   ClusterIP   10.110.94.219   <none>        4
 Follow the documentation here: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 
 * Deploying the dashboard
-> kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+```
 
 * Change the service type from ClusterIP to NodePort
-> kubectl -n kubernetes-dashboard edit service kubernetes-dashboard
+```
+kubectl -n kubernetes-dashboard edit service kubernetes-dashboard
+```
 
 ```
 NAME                   TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)         AGE
