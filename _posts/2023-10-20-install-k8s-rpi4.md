@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Install kubernetes on RaspberriPi 4 - 8GB"
+title:  "Install kubernetes on RaspberryPi 4 - 8GB"
 date:   2023-10-20 10:23:00 +0530
 categories: kubernetes, application modernization, COTS
 ---
 
-## Disable swap memory on all raspberri pi's
+## Disable swap memory on all raspberry pi's
 * Begin with disabling swap memory
 ```
 sudo swapoff -a
@@ -30,7 +30,7 @@ echo " console=serial0,115200 console=tty1 root=PARTUUID=58b06195-02 rootfstype=
 
 * Repeat this on all the nodes
 
-## Installing containerd and network plugins on all raspberri pi's
+## Installing containerd and network plugins on all raspberry pi's
 
 * To begin with, we will need to install the required packaged for container runtime, networking and vxlan for flannel to work. To do this, run the following command:
 ```
@@ -52,7 +52,7 @@ sudo vi /etc/containerd/config.toml
 
 * Repeat this on all the nodes
 
-## Allow Iptables to see bridged traffic on all raspberri pi's
+## Allow Iptables to see bridged traffic on all raspberry pi's
 According to the documentation, Kubernetes needs iptables to be configured to see bridged network traffic.
 
 ```
@@ -78,7 +78,7 @@ sudo sysctl --system
 
 * Repeat this on all the nodes
 
-## Install kubernetes cli's on all raspberri pi's
+## Install kubernetes cli's on all raspberry pi's
 
 * Lets install the required cli's to setup kubernetes
 ```
