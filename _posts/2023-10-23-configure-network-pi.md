@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Assigining a static IP and allowing password based Auth on Ubuntu 23.10"
+title:  "Part 1 - Assigining a static IP and allowing password based Auth on Ubuntu 23.10"
 date:   2023-10-23 10:27:00 +0530
 categories: ubuntu, ssh, network
 ---

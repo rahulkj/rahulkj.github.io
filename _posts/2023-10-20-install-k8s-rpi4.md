@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Install kubernetes on Raspberry Pi 4 - 8GB"
+title:  "Part 2 - Install kubernetes on Raspberry Pi 4 - 8GB"
 date:   2023-10-20 10:23:00 +0530
 categories: kubernetes, raspberry pi, flannel, containerd
 ---
