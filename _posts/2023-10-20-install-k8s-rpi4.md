@@ -189,6 +189,48 @@ kubernetes-dashboard   NodePort   10.111.90.128   <none>        443:32438/TCP   
 
 Access the Web UI, and you will need to generate a token to login to the dashboard. Follow the instructions [here](https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md) to create a user and obtain a token.
 
+## Exposing the kubernetes dashboard via ingress
+
+Now that you have verified the kubernetes dashboard, lets expose this using the ingress controller
+
+* Create the yaml file as follows:
+
+```
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kubernetes-dashboard-ingress
+  namespace: kubernetes-dashboard
+  annotations:
+    nginx.org/ssl-services: kubernetes-dashboard
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+      - kubernetes-dashboard.k8s.int
+      secretName: kubernetes-dashboard-certs
+  rules:
+  - host: kubernetes-dashboard.k8s.int
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kubernetes-dashboard
+            port: 
+              number: 443
+```
+
+Note, the `tls` setting here exposes the service on port `443`, also we are doing passthrough to the underlying service, so the annotations are important here.
+
+* Also create a DNS record for `*.k8s.int` that maps to one of your kubernetes nodes IP.
+
+Finally, you should be able to access `https://kubernetes-dashboard.k8s.int:<NODE PORT>` from your browser
+
 If you are reading this, they yay, you managed to setup your k8s cluster on your Raspberry Pi's successfully.
 
 Enjoy!
