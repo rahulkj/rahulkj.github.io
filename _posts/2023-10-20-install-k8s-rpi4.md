@@ -189,6 +189,58 @@ kubernetes-dashboard   NodePort   10.111.90.128   <none>        443:32438/TCP   
 
 Access the Web UI, and you will need to generate a token to login to the dashboard. Follow the instructions [here](https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md) to create a user and obtain a token.
 
+## Creating a Service Account
+
+We are creating Service Account with the name `admin-user` in namespace `kubernetes-dashboard` first.
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kubernetes-dashboard
+```
+
+## Creating a ClusterRoleBinding
+
+In most cases after provisioning the cluster using `kops`, `kubeadm` or any other popular tool, the `ClusterRole` `cluster-admin` already exists in the cluster. We can use it and create only a `ClusterRoleBinding` for our `ServiceAccount`.
+If it does not exist then you need to create this role first and grant required privileges manually.
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kubernetes-dashboard
+```
+
+## Getting a long-lived Bearer Token for ServiceAccount 
+
+We can also create a token with the secret which bound the service account and the token will be saved in the Secret:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: admin-user
+  namespace: kubernetes-dashboard
+  annotations:
+    kubernetes.io/service-account.name: "admin-user"   
+type: kubernetes.io/service-account-token  
+```
+
+After Secret is created, we can execute the following command to get the token which saved in the Secret:
+
+```shell
+kubectl get secret admin-user -n kubernetes-dashboard -o jsonpath={".data.token"} | base64 -d
+```
 ## Exposing the kubernetes dashboard via ingress
 
 Now that you have verified the kubernetes dashboard, lets expose this using the ingress controller
