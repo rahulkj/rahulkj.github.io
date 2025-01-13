@@ -9,14 +9,14 @@ Please use this article only when operating NSX-T in your homelab, not recommend
 
 Offlate, I started getting notifications from my NSX Manager console, that my passwords for root, admin, audit were going to expire.
 
-![]({{ site.url }}/assets/tkg-v8u3-upgrade/NSX-T-Alarms.png
+![]({{ site.url }}/assets/nsx-t/NSX-T-Alarms.png
 
 While operating in my lab environment, I would prefer to use a strong password, but something that wouldn't expire, as it takes a lot of effort to update the secrets in all the services.
 
 ### Option 1: Using NSX Manager console (UI)
 To remediate this, the recommended approach is to change the password, by navigating to System > User Management > Local Users > Select the 3 dots by the user > Change Password
 
-![]({{ site.url }}/assets/tkg-v8u3-upgrade/NSX-T-Change_Password.png
+![]({{ site.url }}/assets/nsx-t/NSX-T-Change_Password.png
 
 Once done for one user, repeat the same steps for the rest of users, and now you are golden.
 
