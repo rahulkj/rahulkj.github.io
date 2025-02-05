@@ -13,11 +13,11 @@ If you are looking to bootstrap or destroy the k8s clusters that are provisioned
   * direnv
 * Clone the [repo](https://github.com/rahulkj/ansible-k8s-operations) `https://github.com/rahulkj/ansible-k8s-operations`
 * Update the [.envrc](https://github.com/rahulkj/ansible-k8s-operations/.envrc) file with your hosts names, username and passwords
-* Generate the inventory yaml using the script `https://github.com/rahulkj/ansible-k8s-operations/generate-k8s-inventory.sh`, that will generate the inventory files in the [config](https://github.com/rahulkj/ansible-k8s-operations/config/) folder
-* Validate and update the inventory [yamls](https://github.com/rahulkj/ansible-k8s-operations/config) if setting up on vms or k8s
+* Generate the inventory yaml using the script `https://github.com/rahulkj/ansible-k8s-operations/generate-k8s-inventory.sh`, that will generate the inventory files in the [config](https://github.com/rahulkj/ansible-k8s-operations/tree/main/config/) folder
+* Validate and update the inventory [yamls](https://github.com/rahulkj/ansible-k8s-operations/tree/main/config) if setting up on vms or k8s
 
 ### Bootstrap k8s on pi/vms
-To do this, its simple, just run the script `https://github.com/rahulkj/ansible-k8s-operations/run-anisble.sh` with the appropriate options
+To do this, its simple, just run the script `https://github.com/rahulkj/ansible-k8s-operations/tree/main/run-anisble.sh` with the appropriate options
 
 ```
 ./run-ansible.sh k8s-bootstrap
