@@ -8,8 +8,11 @@ categories: confluent platform, installation, ubuntu
 ## Install packages on all machines
 ```
 sudo mkdir -p /etc/apt/keyrings
+
 wget -qO - https://packages.confluent.io/deb/8.0/archive.key | gpg --dearmor | sudo tee /etc/apt/keyrings/confluent.gpg > /dev/null
+
 CP_DIST=$(lsb_release -cs)
+
 echo "Types: deb
 URIs: https://packages.confluent.io/deb/8.0
 Suites: stable
@@ -27,15 +30,16 @@ Signed-By: /etc/apt/keyrings/confluent.gpg" | sudo tee /etc/apt/sources.list.d/c
 sudo apt-get update && sudo apt-get install -y confluent-platform openjdk-21-jdk
 ```
 
-
-# KRaft installation
+## KRaft installation
 
 * Begin with editing the `controller.properties`
+
 ```
 sudo vi /etc/kafka/controller.properties
 ```
 
 * Edit the following fields and provide the right details. Node Id should correspond to the current host
+
 ```
 node.id=1   # set it to 1/2/3
 controller.quorum.voters=1@node-1:9093,2@node-2:9093,3@node-3:9093
@@ -45,29 +49,35 @@ log.dirs=/tmp/kraft-controller-logs # Update it based on where you want the file
 ```
 
 * Generate a UUID that will be use for the installation. This is going to be the same for this cluster installation
+
 ```
 kafka-storage random-uuid
 ```
 
 * Generate the `logs.dir`
+
 ```
 kafka-storage format -t kRJxsfCzQCSJn4If-AZsiA -c /etc/kafka/controller.properties
 Formatting metadata directory /tmp/kraft-controller-logs with confluent.metadata.version 4.0-IV3A.
 ```
 
 * Validate the contents in the `logs.dir`
+
 ```
 ls /tmp/kraft-controller-logs/
 bootstrap.checkpoint  __cluster_metadata-0  meta.properties
 ```
 
 * Manually start the controller
+
 ```
 sudo kafka-server-start /etc/kafka/controller.properties
 ```
 
 * Repeat the steps above on all the controller nodes
+
 * Check the quorum of the controllers
+
 ```
 kafka-metadata-quorum --bootstrap-controller node-1:9093,node-2:9093,node-3:9093 describe --status
 
@@ -82,6 +92,7 @@ CurrentObservers:       []
 ```
 
 * Register the controller service
+
 ```
 sudo chown -R cp-kafka:confluent /tmp/kraft-controller-logs
 sudo chown -R cp-kafka:confluent /var/log/kafka /var/log/confluent
@@ -97,6 +108,7 @@ journalctl -u confluent-server.service -f
 ```
 
 * If all goes well, then register the service on each node
+
 ```
 sudo systemctl enable confluent-server.service
 ```
@@ -121,17 +133,20 @@ advertised.listeners=PLAINTEXT://:9092
 ```
 
 * Using the same UUID that was generated for controllers, generate the `logs.dir`
+
 ```
 kafka-storage format -t kRJxsfCzQCSJn4If-AZsiA -c /etc/kafka/broker.properties
 Formatting metadata directory /tmp/kraft-broker-logs with confluent.metadata.version 4.0-IV3A.
 ```
 
 * Manually start the broker
+
 ```
 sudo kafka-server-start /etc/kafka/broker.properties
 ```
 
 * Register the broker service
+
 ```
 sudo chown -R cp-kafka:confluent /tmp/kraft-controller-logs
 sudo chown -R cp-kafka:confluent /var/log/kafka /var/log/confluent
@@ -147,6 +162,7 @@ journalctl -u confluent-server.service -f
 ```
 
 * If all goes well, then register the service on each node
+
 ```
 sudo systemctl enable confluent-server.service
 ```
@@ -167,10 +183,14 @@ host.name=node-7
 kafkastore.bootstrap.servers=PLAINTEXT://node-4:9092,PLAINTEXT://node-5:9092,PLAINTEXT://node-6:9092
 ```
 
+* Register the service on each node
+
 ```
 sudo systemctl start confluent-schema-registry
 
 sudo systemctl status confluent-schema-registry
+
+sudo systemctl enable confluent-schema-registry
 ```
 
 ## Connect
@@ -181,12 +201,15 @@ sudo systemctl start confluent-kafka-connect
 sudo systemctl status confluent-kafka-connect
 ```
 
+## Kafka Rest Proxy
+
 ```
 sudo systemctl start confluent-kafka-rest
 
 sudo systemctl status confluent-kafka-rest
-```
 
+sudo systemctl enable confluent-kafka-rest
+```
 
 ## ksqlDB Installation
 
@@ -206,11 +229,14 @@ ksql.schema.registry.url=http://node-7:8081
 sudo systemctl start confluent-ksqldb
 
 sudo systemctl status confluent-ksqldb
+
+sudo systemctl enable confluent-ksqldb
 ```
 
 ## Control Center Installation 
 
 Follow the details listed in the [link](https://docs.confluent.io/control-center/current/installation/overview.html)
+
 ```
 wget https://packages.confluent.io/confluent-control-center-next-gen/archive/confluent-control-center-next-gen-2.2.0.tar.gz
 
