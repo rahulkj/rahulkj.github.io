@@ -19,7 +19,7 @@ It generates topologies for all the service to service dependencies.
 Applications can send their metrics to the platform, and have better visibility in the same platform.
 
 Screenshot of the coralogix platform. Looks neat!
-![](../assets/coralogix/new-instance.png)
+![]({{ site.url }}/assets/coralogix/new-instance.png)
 
 ## Setup of collector to monitor my k8s running on Raspberry Pi
 
@@ -74,14 +74,14 @@ coralogix-opentelemetry-collector-69d9959d89-2l2jx   1/1     Running   0        
 ```
 
 If the integration is a success, you will notice that the logs begin to show up on coralogix.com portal
-![](../assets/coralogix/logs.png)
+![]({{ site.url }}/assets/coralogix/logs.png)
 
 Wow, that was quick. Let's look at the dashboard
-![](../assets/coralogix/quick-summary.png)
+![]({{ site.url }}/assets/coralogix/quick-summary.png)
 
-![](../assets/coralogix/log-volumes.png)
+![]({{ site.url }}/assets/coralogix/log-volumes.png)
 
-![](../assets/coralogix/top-errors.png)
+![]({{ site.url }}/assets/coralogix/top-errors.png)
 
 ## Now why choose Coralogix?
 * Its simple to setup. Loads of integrations are available and the console provides a lot of step by step instructions to setup the collectors.
