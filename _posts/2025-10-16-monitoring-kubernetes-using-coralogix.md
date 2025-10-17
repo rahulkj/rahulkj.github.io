@@ -18,7 +18,7 @@ It generates topologies for all the service to service dependencies.
 
 Applications can send their metrics to the platform, and have better visibility in the same platform.
 
-Screenshot of the coralogix platform. Looks neat!
+Screenshot of the [coralogix](coralogix.com) platform. Looks neat!
 ![]({{ site.url }}/assets/coralogix/new-instance.png)
 
 ## Setup of collector to monitor my k8s running on Raspberry Pi
