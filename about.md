@@ -21,12 +21,13 @@ I live in Frisco, Texas, USA with my wife and two kids.
 When I’m not working, I enjoy gardening, cooking, and spending time with my family. 
 
 Here are a few technologies I've recently worked with:
-    - Java and Spring Framework, Go programming
-    - Apache Kafka, Apache Flink, Confluent Platform
-    - Kubernetes and Cloud Native technologies
-    - Korifi and Cloud Foundry on Kubernetes
-    - Carvel tools like kapp, ytt, kbld
-    - VMWare virtualization
-    - Infrastructure as Code tools like Terraform, Ansible
+
+- Java and Spring Framework, Go programming
+- Apache Kafka, Apache Flink, Confluent Platform
+- Kubernetes and Cloud Native technologies
+- Korifi and Cloud Foundry on Kubernetes
+- Carvel tools like kapp, ytt, kbld
+- VMWare virtualization
+- Infrastructure as Code tools like Terraform, Ansible
 
 To learn more about me, visit [https://rahul.win](https://rahul.win)
