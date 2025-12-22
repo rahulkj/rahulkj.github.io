@@ -20,7 +20,7 @@
 
 
 title: myupbeat (blogs)
-email: rahulkj@gmail.com
+email: architect@rahul.win
 description: >- # this means to ignore newlines until "baseurl:"
   This is a my personal site to host all the things that I learn the hardway.
 baseurl: "" # the subpath of your site, e.g. /blog
