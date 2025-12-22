@@ -6,22 +6,27 @@ permalink: /about/
 
 Hello there!
 
-I’m Rahul and I have significant experience in developing cloud native applications and infrastructure
+I’m Rahul and I have over 20 years of experience in the IT industry, working with various technologies and domains.
 
-My passion is to explore new technologies and apply them in my projects.
+I believe in continuous learning and self-improvement, and I’m always looking for new challenges and opportunities to grow.
 
-I’ve dirtied my hands in many technologies, namely
+My passion is to explore new technologies and apply them to solve real world problems. 
 
-- Cloud Foundry
-- VMWare virtualization
-- IaaS (AWS/GCP/Azure/OpenStack/VMWare)
-- Messaging Services like RabbitMQ, ActiveMQ
-- NoSQL databases
-- Spring framework
-- Spring tool suite
-- etc…
+Over the years, I have worked on various technologies like Cloud Computing, DevOps, Microservices, Containers, Kubernetes, and Serverless.
 
-I blog on those articles which are hard to find on google, and those that I learnt the hard way… like the way you are doing now 😉
+I blog about these technologies and share my knowledge with the community. Most of the articles are based on my personal experiences and learnings.
 
-I love sharing the things I learn and hope you enjoy my posts!!
-Also if you find my articles useful, do drop me a note.
+I live in Frisco, Texas, USA with my wife and two kids.
+
+When I’m not working, I enjoy gardening, cooking, and spending time with my family. 
+
+Here are a few technologies I've recently worked with:
+    - Java and Spring Framework, Go programming
+    - Apache Kafka, Apache Flink, Confluent Platform
+    - Kubernetes and Cloud Native technologies
+    - Korifi and Cloud Foundry on Kubernetes
+    - Carvel tools like kapp, ytt, kbld
+    - VMWare virtualization
+    - Infrastructure as Code tools like Terraform, Ansible
+
+To learn more about me, visit [https://rahul.win](https://rahul.win)
