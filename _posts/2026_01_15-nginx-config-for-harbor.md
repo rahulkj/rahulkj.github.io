@@ -2,7 +2,6 @@
 title: "nginx configuration for exposing harbor"
 date: 2026-01-15T11:25:00-06:00
 draft: false
-toc: true
 tags:
   - nginx
   - harbor
