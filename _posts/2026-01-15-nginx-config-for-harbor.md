@@ -51,11 +51,6 @@ server {
     proxy_redirect off;
     proxy_buffering off;
 
-    # restrict methods
-    if ($request_method !~ ^(GET|POST|PUT|HEAD|CONNECT|OPTIONS)$) {
-        return '405';
-    }
-
     # logging
     access_log /var/log/nginx/access.log combined buffer=512k flush=1m;
     error_log  /var/log/nginx/error.log warn;
