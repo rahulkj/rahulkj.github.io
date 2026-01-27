@@ -5,6 +5,8 @@ date:   2023-10-20 10:23:00 +0530
 categories: kubernetes, raspberry pi, flannel, containerd
 ---
 
+This is part 2 of playing around with kubernetes on Raspberry Pi's.
+
 ## Disable swap memory on all Raspberry pi's
 * Begin with disabling swap memory
 ```
