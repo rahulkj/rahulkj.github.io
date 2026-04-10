@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "☸️ Part 2 - Install Kubernetes on Raspberry Pi 4 - 8GB"
-date:   2023-10-20 10:23:00 +0530
+date:   2023-10-23 10:23:00 +0530
 tags:
   - kubernetes
   - raspberry-pi
