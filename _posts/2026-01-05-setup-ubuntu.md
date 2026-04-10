@@ -1,16 +1,15 @@
 ---
+
 title: "⚙️ Setup Ubuntu 25.10 to Run Ansible Scripts"
 date: 2026-01-05T19:31:56-06:00
 draft: false
 tags:
-  - ubuntu
-  - setup
-  - ansible
-  - automation
+  - devops
   - homelab
+  - ci-cd
 categories:
-  - automation
-  - homelab
+  - Homelab
+
 ---
 
 ## 🔄 Switch Sudo Into Manual Mode

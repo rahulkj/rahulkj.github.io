@@ -1,17 +1,17 @@
 ---
+
 layout: post
 title: "❌ Error with TKG Cluster Provisioning"
 date:   2021-10-10 16:51:00 -0600
 tags:
-  - tkg
-  - vsphere
-  - kubernetes
-  - troubleshooting
-  - homelab
-categories:
   - kubernetes
   - vmware
-  - troubleshooting
+  - homelab
+  - devops
+categories:
+  - Kubernetes
+  - VMware
+
 ---
 
 ## 🚨 Create Cluster Failed

@@ -1,16 +1,16 @@
 ---
+
 layout: post
 title: "🔐 Self Signed Certificates - Not Standards Compliant"
 date:   2022-09-09 9:34:00 +0530
 tags:
-  - openssl
-  - certificates
-  - security
-  - macos
   - golang
+  - programming
+  - infrastructure
+  - openssl
 categories:
-  - security
-  - tools
+  - Infrastructure
+
 ---
 
 If you are a Mac user, you must have noticed that you get an error with the cli (command line interface) tools written in golang, throw an exception:

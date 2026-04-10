@@ -1,15 +1,15 @@
 ---
+
 layout: post
 title: "🔢 Calculating IPs Available Using Bosh"
 date:   2019-10-16 23:35:00 -0600
 tags:
-  - bosh
   - cloudfoundry
-  - networking
   - ipam
+  - infrastructure
 categories:
-  - cloudfoundry
-  - networking
+  - CloudFoundry
+
 ---
 
 For big cloudfoundry customers, IP address management is a big challenge. It would be nice if there was a simple way to identify what IP's are available in a given CIDR block, so one could plan the network and determine bottlenecks due to IP Address allocations.

@@ -1,18 +1,16 @@
 ---
+
 layout: post
 title: "🤖 Ansible Playbook for Managing K8s Ops"
 date: 2025-02-05 12:40:00 +0530
 tags:
-  - ansible
+  - devops
   - kubernetes
-  - raspberry-pi
-  - ubuntu
-  - automation
   - homelab
+  - ci-cd
 categories:
-  - automation
-  - kubernetes
-  - homelab
+  - Kubernetes
+
 ---
 
 ### 📋 Pre-requisites

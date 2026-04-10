@@ -1,16 +1,16 @@
 ---
+
 title: "🐳 Podman to Generate Images"
 date: 2026-01-27T12:32:00-06:00
 draft: false
 tags:
-  - kubernetes
-  - podman
   - oci
-  - containers
-  - harbor
-categories:
-  - containers
   - kubernetes
+  - containers
+categories:
+  - Kubernetes
+  - Containers
+
 ---
 
 ## 🐧 Using Podman Desktop Instead of Docker

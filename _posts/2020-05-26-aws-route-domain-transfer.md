@@ -1,15 +1,16 @@
 ---
+
 layout: post
 title: "🌐 Transfer AWS Domain from One Account to Another Using AWS CLI"
 date:   2020-05-26 11:20:00 -0600
 tags:
   - aws
   - domain
-  - dns
   - cloud
+  - infrastructure
 categories:
-  - cloud
-  - networking
+  - Infrastructure
+
 ---
 
 ## ✅ Prerequisites

@@ -1,17 +1,16 @@
 ---
+
 layout: post
 title: "🔧 Troubleshoot the Workload Clusters"
 date:   2022-11-01 17:23:00 +0530
 tags:
-  - tanzu
   - kubernetes
-  - troubleshooting
-  - vsphere
   - vmware
+  - devops
 categories:
-  - kubernetes
-  - vmware
-  - troubleshooting
+  - Kubernetes
+  - VMware
+
 ---
 
 ### 🔍 Troubleshooting by Connecting to the vCenter - Non Routable Workload Cluster IP's

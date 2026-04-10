@@ -1,19 +1,18 @@
 ---
+
 layout: post
 title: "🔌 VMware Avi Deployment and Integration with K8s Clusters"
 date:   2020-12-11 14:00:00 -0600
 tags:
-  - avi
   - kubernetes
   - vmware
+  - homelab
+  - infrastructure
   - load-balancer
-  - homelab
-  - networking
 categories:
-  - vmware
-  - kubernetes
-  - networking
-  - homelab
+  - Kubernetes
+  - VMware
+
 ---
 
 Plan your deployment topology:

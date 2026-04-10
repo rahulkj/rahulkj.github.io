@@ -1,15 +1,16 @@
 ---
+
 layout: post
 title: "💻 Install and Configuration of Various Softwares"
 date:   2012-11-27 16:00:00 -0600
 tags:
-  - macos
+  - development
+  - programming
+  - tools
   - software
-  - development
-  - tools
 categories:
-  - tools
-  - development
+  - Programming
+
 ---
 
 I prefer using HomeBrew to brew my Mac. If you don't already have HomeBrew on your Mac, get it by running

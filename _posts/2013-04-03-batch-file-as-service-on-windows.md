@@ -1,15 +1,15 @@
 ---
+
 layout: post
 title: "🪟 Running Batch File as a Service (Windows XP Only)"
 date:   2013-04-03 8:34:00 -0600
 tags:
-  - windows
   - batch
+  - programming
   - service
-  - scripting
 categories:
-  - windows
-  - scripting
+  - Programming
+
 ---
 
 To run a batch file (.bat) as a windows service, you can perform the following

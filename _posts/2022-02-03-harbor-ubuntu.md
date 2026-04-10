@@ -1,16 +1,14 @@
 ---
+
 layout: post
 title: "📦 Harbor Installation on Ubuntu"
 date:   2022-02-03 16:51:00 -0600
 tags:
-  - harbor
-  - ubuntu
-  - containers
-  - registry
-  - docker
-categories:
   - containers
   - homelab
+categories:
+  - Containers
+
 ---
 
 ## 🖥️ Pre-reqs for VM

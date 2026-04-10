@@ -1,16 +1,16 @@
 ---
+
 layout: post
 title: "🧩 Kubernetes Addons List"
 date: 2024-07-7 17:10:00 +0530
 tags:
+  - infrastructure
   - kubernetes
-  - raspberry-pi
+  - homelab
   - addons
-  - storage
-  - homelab
 categories:
-  - kubernetes
-  - homelab
+  - Kubernetes
+
 ---
 
 ### 🚀 Must Try Kubernetes Addons

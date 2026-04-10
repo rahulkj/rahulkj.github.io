@@ -1,15 +1,15 @@
 ---
+
 layout: post
 title: "🏗️ Maven Java Service Wrappers"
 date:   2013-04-03 16:54:00 -0600
 tags:
-  - maven
-  - java
   - service-wrapper
   - build-tools
+  - programming
 categories:
-  - development
-  - build-tools
+  - Programming
+
 ---
 
 Maven Java Service Wrappers are useful for generating daemon scripts for the stand alone java programs.

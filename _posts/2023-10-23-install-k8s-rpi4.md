@@ -1,18 +1,17 @@
 ---
+
 layout: post
 title: "☸️ Part 2 - Install Kubernetes on Raspberry Pi 4 - 8GB"
 date:   2023-10-23 10:23:00 +0530
 tags:
   - kubernetes
-  - raspberry-pi
+  - containers
+  - homelab
   - flannel
-  - containerd
-  - homelab
-  - arm64
 categories:
-  - kubernetes
-  - homelab
-  - raspberry-pi
+  - Kubernetes
+  - Containers
+
 ---
 
 This is part 2 of playing around with kubernetes on Raspberry Pi's.

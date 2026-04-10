@@ -1,18 +1,18 @@
 ---
+
 layout: post
 title: "🏗️ Headless Builds for Container Images"
 date:   2021-01-08 16:00:00 -0600
 tags:
-  - kubernetes
+  - containers
   - buildah
-  - skopeo
-  - containerd
-  - containers
-  - ci-cd
-categories:
-  - containers
-  - devops
   - kubernetes
+  - ci-cd
+  - skopeo
+categories:
+  - Kubernetes
+  - Containers
+
 ---
 
 I was looking for options on how I could build my container images, without installing docker engine on my linux machines. I was introduced to the https://github.com/containers repository that is a holy grail of awesome tools for dealing with containers.

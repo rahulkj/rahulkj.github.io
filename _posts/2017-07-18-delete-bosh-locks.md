@@ -1,15 +1,15 @@
 ---
+
 layout: post
 title: "🔒 Deleting BOSH Locks"
 date:   2017-07-18 21:19:00 -0600
 tags:
-  - bosh
   - cloudfoundry
-  - troubleshooting
   - locks
+  - devops
 categories:
-  - cloudfoundry
-  - troubleshooting
+  - CloudFoundry
+
 ---
 
 If you encounter the error `"Error 100: Unable to get deployment lock, maybe a deployment is in progress. Try again later."`, then likely there is something going on with BOSH

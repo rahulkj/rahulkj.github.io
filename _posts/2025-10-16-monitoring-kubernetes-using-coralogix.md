@@ -1,17 +1,16 @@
 ---
+
 layout: post
 title: "📊 Kubernetes Monitoring Using Coralogix"
 date: 2025-10-16 12:20:00 +0530
 tags:
+  - kubernetes
   - coralogix
-  - monitoring
-  - kubernetes
-  - logging
   - observability
+  - infrastructure
 categories:
-  - monitoring
-  - kubernetes
-  - logging
+  - Kubernetes
+
 ---
 
 ## 👁️ Observability Into K8s Platform

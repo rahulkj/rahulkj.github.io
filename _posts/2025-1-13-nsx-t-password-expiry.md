@@ -1,17 +1,15 @@
 ---
+
 layout: post
 title: "🔐 NSX-T Password Expiry"
 date: 2025-01-13 15:30:00 +0530
 tags:
-  - nsx-t
-  - networking
-  - security
   - vmware
   - homelab
+  - infrastructure
 categories:
-  - networking
-  - security
-  - vmware
+  - VMware
+
 ---
 
 ⚠️ Please use this article only when operating NSX-T in your homelab, not recommended for production use.

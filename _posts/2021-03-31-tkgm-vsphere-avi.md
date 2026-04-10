@@ -1,18 +1,16 @@
 ---
+
 layout: post
 title: "☸️ Deploy TKG 1.3 on vSphere with AVI Load Balancer"
 date:   2021-03-31 22:00:00 -0600
 tags:
-  - tkg
-  - avi
-  - vsphere
   - kubernetes
   - vmware
   - homelab
 categories:
-  - kubernetes
-  - vmware
-  - homelab
+  - Kubernetes
+  - VMware
+
 ---
 
 ## 📋 Plan Your Deployment Topology:

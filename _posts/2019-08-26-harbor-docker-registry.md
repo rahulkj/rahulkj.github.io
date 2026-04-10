@@ -1,16 +1,14 @@
 ---
+
 layout: post
 title: "🐳 Harbor & Docker Images"
 date:   2019-08-26 14:07:00 -0600
 tags:
-  - docker
-  - harbor
-  - registry
   - containers
   - homelab
 categories:
-  - containers
-  - devops
+  - Containers
+
 ---
 
 ## 🧐 Why Harbor?

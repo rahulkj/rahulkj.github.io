@@ -1,16 +1,16 @@
 ---
+
 layout: post
 title: "⬆️ Upgrading TKGs on vCenter 8u3"
 date: 2024-07-7 17:10:00 +0530
 tags:
   - kubernetes
-  - vsphere
-  - tkgs
   - vmware
   - upgrade
 categories:
-  - kubernetes
-  - vmware
+  - Kubernetes
+  - VMware
+
 ---
 
 ### 🎯 Upgrading Workload Management Supervisor Clusters

@@ -1,18 +1,16 @@
 ---
+
 title: "NGINX Configuration for Exposing Harbor"
 date: 2026-01-15T11:25:00-06:00
 draft: false
 tags:
-  - nginx
-  - harbor
-  - reverse-proxy
-  - ssl
   - containers
+  - reverse-proxy
+  - infrastructure
   - homelab
 categories:
-  - containers
-  - networking
-  - homelab
+  - Containers
+
 ---
 
 ## 🌐 NGINX Configuration for Harbor

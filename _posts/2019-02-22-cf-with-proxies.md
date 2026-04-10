@@ -1,15 +1,15 @@
 ---
+
 layout: post
 title: "🌐 Proxies with Cloud Foundry"
 date:   2019-02-22 18:40:00 -0600
 tags:
   - cloudfoundry
   - proxies
-  - networking
-  - paas
+  - infrastructure
 categories:
-  - cloudfoundry
-  - networking
+  - CloudFoundry
+
 ---
 
 One of the most annoying topics in my work experience, is dealing with proxies. I understand why customers use proxies, but when it comes to a product like cloud foundry, where there are multiple components that need to talk, so they can function successfully, then with proxy setup, it becomes hard.

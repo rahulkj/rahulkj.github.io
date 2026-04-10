@@ -1,17 +1,15 @@
 ---
+
 layout: post
 title: "🔧 Part 1 - Assigning a Static IP and Allowing Password Based Auth on Ubuntu 23.10"
 date:   2023-10-20 10:27:00 +0530
 tags:
-  - ubuntu
+  - homelab
   - ssh
   - network
-  - raspberry-pi
-  - homelab
 categories:
-  - homelab
-  - networking
-  - raspberry-pi
+  - Homelab
+
 ---
 
 ## 🌐 Setting Up Network After the First Boot

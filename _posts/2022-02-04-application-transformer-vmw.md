@@ -1,21 +1,19 @@
 ---
+
 layout: post
 title: "🔄 Application Transformer for VMware Tanzu"
 date:   2022-02-04 10:51:00 +0530
 tags:
-  - application-transformer
-  - vmware
-  - tanzu
-  - kubernetes
-  - cots
-  - java
   - legacy
-  - migration
-  - vmware
-categories:
-  - vmware
+  - cots
   - kubernetes
+  - vmware
+  - programming
   - migration
+categories:
+  - Kubernetes
+  - VMware
+
 ---
 
 [Application Transformer for VMware Tanzu](https://tanzu.vmware.com/content/blog/application-transformer-for-vmware-tanzu) is a product that helps Infrastructure Adminstrators to learn about the inventory that they are managing on the on-prem infrastructure. 

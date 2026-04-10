@@ -1,16 +1,17 @@
 ---
+
 layout: post
 title: "📚 Steps to Install Confluent Platform Manually"
 date: 2025-09-06 19:20:00 +0530
 tags:
-  - confluent
-  - kafka
   - installation
-  - ubuntu
-  - messaging
-categories:
-  - messaging
+  - kafka
+  - homelab
   - infrastructure
+  - confluent
+categories:
+  - Homelab
+
 ---
 
 ## 📦 Install Packages on All Machines

@@ -1,16 +1,13 @@
 ---
+
 layout: post
 title: "🔒 Certificates and Their Order of Deployment"
 date:   2019-02-22 18:40:00 -0600
 tags:
-  - certificates
-  - ssl
-  - security
-  - nginx
-  - networking
+  - infrastructure
 categories:
-  - security
-  - networking
+  - Infrastructure
+
 ---
 
 One common question that developers ask, "What is the sequence of specifying certificates, when using nginx?" and "Does the order really matter?"

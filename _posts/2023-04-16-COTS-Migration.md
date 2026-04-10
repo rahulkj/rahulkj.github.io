@@ -1,17 +1,18 @@
 ---
+
 layout: post
 title: "💭 Thoughts on Migration COTS Applications"
 date:   2023-04-16 8:23:00 +0530
 tags:
-  - kubernetes
-  - modernization
-  - cots
-  - migration
   - containers
-categories:
+  - cots
   - kubernetes
-  - migration
   - modernization
+  - migration
+categories:
+  - Kubernetes
+  - Containers
+
 ---
 
 ## 🛒 Commercial Off The Shelf (COTS) Applications

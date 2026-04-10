@@ -1,15 +1,15 @@
 ---
+
 layout: post
 title: "💾 Ubuntu - Adding Additional Hard Drives"
 date:   2018-04-11 15:33:55 -0600
 tags:
-  - ubuntu
-  - storage
   - filesystem
-  - linux
+  - homelab
+  - infrastructure
 categories:
-  - linux
-  - storage
+  - Homelab
+
 ---
 
 - Power off the virtual machine.

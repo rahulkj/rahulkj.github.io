@@ -1,17 +1,16 @@
 ---
+
 layout: post
 title: "🌱 Spring Profiles and Tomcat"
 date:   2013-03-06 19:05:00 -0600
 tags:
-  - spring
-  - tomcat
-  - java
-  - profiles
   - debugging
+  - tomcat
+  - programming
+  - profiles
 categories:
-  - development
-  - java
-  - troubleshooting
+  - Programming
+
 ---
 
 Lately, I ran into an issue where my spring application failed to start, when I deployed it to tomcat 7.

@@ -1,16 +1,17 @@
 ---
+
 layout: post
 title: "📱 Hosting iOS and Android Apps from Your Own Portal"
 date:   2013-04-23 12:10:00 -0600
 tags:
+  - hosting
   - mobile
   - ios
-  - android
-  - hosting
   - testing
+  - android
 categories:
-  - mobile
-  - development
+  - Programming
+
 ---
 
 Want to host your iOS and Android applications for development and QA testing?

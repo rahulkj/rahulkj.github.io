@@ -1,17 +1,16 @@
 ---
+
 layout: post
 title: "☸️ Setup Tanzu Kubernetes Grid (TKG) on vSphere 6.7u3"
 date:   2020-06-09 5:00:00 -0600
 tags:
   - kubernetes
-  - tkg
-  - vsphere
   - vmware
   - homelab
 categories:
-  - kubernetes
-  - vmware
-  - homelab
+  - Kubernetes
+  - VMware
+
 ---
 
 ## ✅ Prerequisites

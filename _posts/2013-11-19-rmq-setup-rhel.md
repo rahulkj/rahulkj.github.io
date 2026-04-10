@@ -1,16 +1,15 @@
 ---
+
 layout: post
 title: "🐇 RabbitMQ Cluster Setup on RHEL 6.4"
 date:   2013-11-19 00:16:00 -0600
 tags:
-  - rabbitmq
-  - cluster
   - rhel
-  - messaging
-  - setup
-categories:
-  - messaging
+  - cluster
   - infrastructure
+categories:
+  - Infrastructure
+
 ---
 
 #### 🚫 Steps to Turn Off IPTables:

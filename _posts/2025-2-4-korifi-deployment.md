@@ -1,18 +1,15 @@
 ---
+
 layout: post
 title: "☸️ Run Korifi on Debian Based OS Running on Raspberry Pi's / VMs"
 date: 2025-02-04 9:30:00 +0530
 tags:
-  - korifi
-  - cloudfoundry
-  - raspberry-pi
-  - ubuntu
-  - kubernetes
-  - paas
-categories:
   - cloudfoundry
   - kubernetes
   - homelab
+categories:
+  - Kubernetes
+
 ---
 
 ### ✅ Prerequisites

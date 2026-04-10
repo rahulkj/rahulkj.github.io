@@ -1,19 +1,18 @@
 ---
+
 title: "☸️ Setting Up K8s on Ubuntu 25.10 on Raspberry Pi 5"
 date: 2026-01-27T11:16:00-06:00
 draft: false
 tags:
-  - kubernetes
-  - traefik
   - headlamp
-  - ubuntu
-  - raspberry-pi
-  - homelab
-  - arm64
-categories:
+  - containers
+  - traefik
   - kubernetes
   - homelab
-  - raspberry-pi
+categories:
+  - Kubernetes
+  - Containers
+
 ---
 
 ## 🖥️ Installation of the OS

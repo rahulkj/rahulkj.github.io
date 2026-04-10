@@ -1,16 +1,16 @@
 ---
+
 title: "📦 Install UISP on Ubuntu 25.10"
 date: 2026-03-06T16:46:00-06:00
 draft: false
 tags:
-  - ubuntu
+  - infrastructure
+  - containers
+  - homelab
   - uisp
-  - networking
-  - homelab
-  - docker
 categories:
-  - networking
-  - homelab
+  - Containers
+
 ---
 
 ## 🎯 Objective

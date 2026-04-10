@@ -1,15 +1,15 @@
 ---
+
 layout: post
 title: "🐙 GitHub Cheats"
 date:   2012-03-08 14:05:00 -0600
 tags:
-  - git
-  - github
   - version-control
+  - programming
   - commands
 categories:
-  - devops
-  - tools
+  - Programming
+
 ---
 
 Visit GitHub at [GitHub](http://github.com)

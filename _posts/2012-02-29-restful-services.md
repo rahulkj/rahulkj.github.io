@@ -1,17 +1,15 @@
 ---
+
 layout: post
 title: "🌐 Restful Services"
 date:   2012-02-29 00:32:00 -0600
 tags:
-  - java
-  - spring
-  - rest
+  - programming
   - web-services
   - api
 categories:
-  - development
-  - programming
-  - web-services
+  - Programming
+
 ---
 
 I'm sure not many people know about how the browser security plays with the Restful webservices, but here is a small summary of it.

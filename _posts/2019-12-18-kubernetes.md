@@ -1,15 +1,17 @@
 ---
+
 layout: post
 title: "☸️ Kubernetes Cheat Sheet"
 date:   2019-12-18 09:35:00 -0600
 tags:
-  - kubernetes
-  - kubectl
   - cheat-sheet
-  - containers
-categories:
   - kubernetes
   - containers
+  - kubectl
+categories:
+  - Kubernetes
+  - Containers
+
 ---
 
 📚 Cheat Sheet - https://kubernetes.io/docs/reference/kubectl/cheatsheet/
