@@ -1,0 +1,55 @@
+---
+layout: default
+---
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+        {{ page.date | date: date_format }}
+      </time>
+      {% if page.author %}
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <span itemprop="name">{{ page.author }}</span>
+        </span>
+      {% endif %}
+    </p>
+    
+    {% if page.tags.size > 0 %}
+    <div class="tags-container">
+      {% for tag in page.tags %}
+        <a href="{{ "/tags" | relative_url }}#{{ tag }}" class="tag">{{ tag }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+    
+    {% if page.categories.size > 0 %}
+    <div class="categories-container">
+      {% for category in page.categories %}
+        <a href="{{ "/categories" | relative_url }}#{{ category }}" class="category">{{ category }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  {% if page.tags.size > 0 %}
+    {% assign defined_tags = site.tags | map: "name" %}
+    <div class="post-tags">
+      <span>Tags:</span>
+      {% for tag in page.tags %}
+        {% if defined_tags contains tag %}
+          <a href="{{ site.baseurl }}/tags#{{ tag }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+        {% else %}
+          {{ tag }}{% unless forloop.last %}, {% endunless %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+</article>

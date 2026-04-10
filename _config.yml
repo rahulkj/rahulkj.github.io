@@ -16,7 +16,7 @@
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+# in the templates via {{ site.myvariable }).
 
 
 title: myupbeat (blogs)
@@ -32,4 +32,21 @@ github_username:  rahulkj
 theme: minima
 plugins:
   - jekyll-feed
+
+# Minima theme settings
+minima:
+  date_format: "%b %-d, %Y"
+  social_links:
+    github: rahulkj
+    twitter: rahulkj
+
+# Custom settings
+header_pages:
+  - about.md
+  - tags.md
+  - categories.md
+
+# Sass settings
+sass:
+  style: compressed
 
