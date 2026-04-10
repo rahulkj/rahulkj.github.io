@@ -1,11 +1,19 @@
 ---
 layout: post
-title: "Steps to install Confluent Platform manually"
+title: "📚 Steps to Install Confluent Platform Manually"
 date: 2025-09-06 19:20:00 +0530
-categories: confluent platform, installation, ubuntu
+tags:
+  - confluent
+  - kafka
+  - installation
+  - ubuntu
+  - messaging
+categories:
+  - messaging
+  - infrastructure
 ---
 
-## Install packages on all machines
+## 📦 Install Packages on All Machines
 ```
 sudo mkdir -p /etc/apt/keyrings
 

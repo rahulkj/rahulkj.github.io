@@ -1,13 +1,21 @@
 ---
-title: "nginx configuration for exposing harbor"
+title: "NGINX Configuration for Exposing Harbor"
 date: 2026-01-15T11:25:00-06:00
 draft: false
 tags:
   - nginx
   - harbor
+  - reverse-proxy
+  - ssl
+  - containers
+  - homelab
+categories:
+  - containers
+  - networking
+  - homelab
 ---
 
-## nginx configuration for harbor
+## 🌐 NGINX Configuration for Harbor
 
 * Create the DNS records in your public DNS
 * Generate the certificates for your external harbor endpoint. I use letsencrypt.

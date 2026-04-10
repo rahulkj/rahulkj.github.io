@@ -1,11 +1,19 @@
 ---
 layout: post
-title:  "RabbitMQ Cluster setup on RHEL 6.4"
+title: "🐇 RabbitMQ Cluster Setup on RHEL 6.4"
 date:   2013-11-19 00:16:00 -0600
-categories: rabbitmq cluster rhel
+tags:
+  - rabbitmq
+  - cluster
+  - rhel
+  - messaging
+  - setup
+categories:
+  - messaging
+  - infrastructure
 ---
 
-#### Steps to turn off iptables:
+#### 🚫 Steps to Turn Off IPTables:
 
 - `sudo service iptables save`
 - `sudo service iptables stop`

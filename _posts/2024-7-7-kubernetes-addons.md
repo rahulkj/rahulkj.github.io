@@ -1,15 +1,19 @@
 ---
 layout: post
-title: "Kubernetes Addons List"
+title: "🧩 Kubernetes Addons List"
 date: 2024-07-7 17:10:00 +0530
-categories: kubernetes, rpi-4
+tags:
+  - kubernetes
+  - raspberry-pi
+  - addons
+  - storage
+  - homelab
+categories:
+  - kubernetes
+  - homelab
 ---
 
-Recently I was setting up kubernetes on my RaspberryPi 4's + SSD storage and ran into strange issues, related to the storage going unresponsive after say 12 hours. It needed constant reboot. I purchased the PoE hat to power up my Pi's over PoE, and that didn't help either.
-
-Finally, I looked at the back of my Pi's to realize all this while I was connecting my SSD on USB 2.0 and not USB 3.0. I switched the connections to my SSD over to USB 3.0 and since then I have had no issues with Pi's and k8s.
-
-### Must try kubernetes addons
+### 🚀 Must Try Kubernetes Addons
 Along the lines of managing k8s on my Pi's, I ran a search on [reddit](https://www.reddit.com/r/kubernetes/comments/1849egq/must_have_kubernetes_cluster_addons/) (yes Reddit, and not ChatGPT) and some amazing folks posted these addon's. Here is the list:
 
 - [Botkube](https://botkube.io/) - A monitoring add-on that sends alerts directly to chat messaging platforms with error metadata attached. Compatible with popular clients such as Discord or Slack.

@@ -1,8 +1,16 @@
 ---
 layout: post
-title:  "SSH into the warden containers running within a DEA in bosh-lite"
+title: "🔑 SSH into the Warden Containers Running Within a DEA in Bosh-Lite"
 date:   2015-05-08 19:00:00 -0600
-categories: cloudfoundry ssh warden
+tags:
+  - cloudfoundry
+  - bosh
+  - ssh
+  - warden
+  - containers
+categories:
+  - cloudfoundry
+  - containers
 ---
 
 If you're using bosh-lite and wondering on how you could get into your application container, then follow the steps below:

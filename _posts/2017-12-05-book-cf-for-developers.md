@@ -1,8 +1,15 @@
 ---
 layout: post
-title:  "Book for Cloud foundry Developers"
+title: "📚 Book for Cloud Foundry Developers"
 date:   2017-12-05 13:49:00 -0600
-categories: docker harbor registry
+tags:
+  - cloudfoundry
+  - books
+  - development
+  - learning
+categories:
+  - cloudfoundry
+  - resources
 ---
 
 Are you a developer and new to cloud foundry? If you are looking for a hands on book to help you in your journey to pushing your applications onto Cloud Foundry, then here is the book.

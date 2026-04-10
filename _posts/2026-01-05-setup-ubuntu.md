@@ -1,14 +1,19 @@
 ---
-title: "Setup Ubuntu 25.10 to run ansible scripts"
+title: "⚙️ Setup Ubuntu 25.10 to Run Ansible Scripts"
 date: 2026-01-05T19:31:56-06:00
 draft: false
 tags:
   - ubuntu
   - setup
   - ansible
+  - automation
+  - homelab
+categories:
+  - automation
+  - homelab
 ---
 
-## Switch sudo into manual mode
+## 🔄 Switch Sudo Into Manual Mode
 ```
 sudo update-alternatives --set sudo /usr/bin/sudo.ws
 ```

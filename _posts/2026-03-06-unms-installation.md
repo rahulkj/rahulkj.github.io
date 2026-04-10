@@ -1,20 +1,26 @@
 ---
-title: "Install UISP on Ubuntu 25.10"
+title: "📦 Install UISP on Ubuntu 25.10"
 date: 2026-03-06T16:46:00-06:00
 draft: false
 tags:
   - ubuntu
   - uisp
+  - networking
+  - homelab
+  - docker
+categories:
+  - networking
+  - homelab
 ---
 
-## Objective
+## 🎯 Objective
 The goal of this article is to go over the setup of uisp on Raspberry Pi 4, that is running ubuntu 25.10 server.
 
 The process is simple, but needs some minor tweaks.
 
 So let's begin!
 
-## Setting up sudo access
+## 🔧 Setting Up Sudo Access
 With 25.10, you will need to change the way you authenticate using `sudo` in 25.10
 
 > sudo update-alternatives --set sudo /usr/bin/sudo.ws
@@ -32,7 +38,7 @@ sudo systemctl start systemd-timesyncd
 sudo systemctl status systemd-timesyncd
 ```
 
-## Let's install docker
+## 🐳 Let's Install Docker
 
 Since uisp needs docker installed, its better to do this beforehand. To do this follow the instructions on the [docker website](https://docs.docker.com/engine/install/ubuntu/)
 
@@ -43,7 +49,7 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
 
-## Installing UISP
+## 📦 Installing UISP
 
 * This is a bit of an involved process. First download the script from the [uisp site](https://help.uisp.com/hc/en-us/articles/22591008678039-UISP-First-Time-Setup-Installation)
 

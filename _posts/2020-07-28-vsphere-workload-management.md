@@ -1,8 +1,18 @@
 ---
 layout: post
-title:  "vSphere 7 + Workload Management"
+title: "☸️ vSphere 7 + Workload Management"
 date:   2020-07-28 5:00:00 -0600
-categories: tkg, vsphere 7, workload management, homelab
+tags:
+  - kubernetes
+  - vsphere
+  - vmware
+  - workload-management
+  - nsx-t
+  - homelab
+categories:
+  - kubernetes
+  - vmware
+  - homelab
 ---
 
 To enable Workload Management on vSphere 7, ensure the following steps are completed:

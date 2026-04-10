@@ -1,5 +1,5 @@
 ---
-title: "Setting up k8s on ubuntu 25.10 on Raspberry Pi 5"
+title: "☸️ Setting Up K8s on Ubuntu 25.10 on Raspberry Pi 5"
 date: 2026-01-27T11:16:00-06:00
 draft: false
 tags:
@@ -7,9 +7,16 @@ tags:
   - traefik
   - headlamp
   - ubuntu
+  - raspberry-pi
+  - homelab
+  - arm64
+categories:
+  - kubernetes
+  - homelab
+  - raspberry-pi
 ---
 
-## Installation of the OS
+## 🖥️ Installation of the OS
 * Flash the NVME m2 SSD using [Raspberry Pi Imager](https://www.raspberrypi.com/software/), and install Ubuntu 25.10 OS on it.
 * Ensure you specify the hostname, username, password, etc to reduce the steps post flashing the drive.
 * Startup your Raspberry Pi, and configure the network and assign a static ip

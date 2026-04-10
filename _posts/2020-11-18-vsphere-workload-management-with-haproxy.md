@@ -1,8 +1,18 @@
 ---
 layout: post
-title:  "vSphere 7 + Workload Management + HAProxy"
+title: "☸️ vSphere 7 + Workload Management + HAProxy"
 date:   2020-11-18 5:00:00 -0600
-categories: tkg, vsphere 7, workload management, homelab, haproxy
+tags:
+  - vsphere
+  - kubernetes
+  - workload-management
+  - haproxy
+  - vmware
+  - homelab
+categories:
+  - kubernetes
+  - vmware
+  - homelab
 ---
 
 To enable Workload Management on vSphere 7 and using HAProxy as the networking stack, ensure the following steps are completed:

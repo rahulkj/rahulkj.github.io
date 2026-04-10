@@ -1,8 +1,16 @@
 ---
 layout: post
-title:  "Vagrantup - Multiple machine setup"
+title: "📦 Vagrantup - Multiple Machine Setup"
 date:   2014-02-05 14:57:00 -0600
-categories: vagrant setup
+tags:
+  - vagrant
+  - virtualbox
+  - virtualization
+  - devops
+categories:
+  - devops
+  - tools
+  - virtualization
 ---
 
 Time to spin up multiple virtual machines with use of open source.

@@ -1,13 +1,20 @@
 ---
 layout: post
-title:  "Kubernetes"
+title: "☸️ Kubernetes Cheat Sheet"
 date:   2019-12-18 09:35:00 -0600
-categories: kubernetes
+tags:
+  - kubernetes
+  - kubectl
+  - cheat-sheet
+  - containers
+categories:
+  - kubernetes
+  - containers
 ---
 
-Cheat Sheet - https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+📚 Cheat Sheet - https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 
-## Architecture
+## 🏗️ Architecture
 
 Master consists of:
 * API Server - Frontend to k8s to communicate with the cluster

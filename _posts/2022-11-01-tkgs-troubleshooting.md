@@ -1,18 +1,20 @@
 ---
 layout: post
-title:  "Troubleshoot the workload clusters"
+title: "🔧 Troubleshoot the Workload Clusters"
 date:   2022-11-01 17:23:00 +0530
-categories: tanzu, kubernetes, workload clusters, troubleshooting
+tags:
+  - tanzu
+  - kubernetes
+  - troubleshooting
+  - vsphere
+  - vmware
+categories:
+  - kubernetes
+  - vmware
+  - troubleshooting
 ---
 
-You might have a need to login to your workload clusters to troubleshoot some issues related to:
-* DNS
-* Certificates
-* External connectivity, etc
-
-So how do we do this?
-
-### Troubleshooting by connecting to the vCenter - Non routable workload cluster IP's
+### 🔍 Troubleshooting by Connecting to the vCenter - Non Routable Workload Cluster IP's
 
 - You can ssh into your vCenter using the **root** crdentials:
 

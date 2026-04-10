@@ -1,8 +1,17 @@
 ---
 layout: post
-title:  "Session Replication with an External Gemfire Server for Applications deployed within CloudFoundry"
+title: "🔄 Session Replication with an External GemFire Server for Applications Deployed Within CloudFoundry"
 date:   2015-08-19 22:00:00 -0600
-categories: session_replication gemfire cloudfoundry cloud_native
+tags:
+  - gemfire
+  - cloudfoundry
+  - session-replication
+  - caching
+  - cloud-native
+categories:
+  - cloudfoundry
+  - caching
+  - infrastructure
 ---
 
 Did you know CloudFoundry allows us to offload session management to `Gemfire` and `Redis`. as a developer, you've got to just bind to a service, and that's pretty much it, no special coding required. So here's a small write-up to help you on setting up the standalone external `Gemfire` server to deal with sessions.

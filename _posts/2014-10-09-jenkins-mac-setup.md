@@ -1,8 +1,16 @@
 ---
 layout: post
-title:  "Install Jenkins setup on Mac"
+title: "🔧 Install Jenkins Setup on Mac"
 date:   2014-10-09 16:14:00 -0600
-categories: mac softwares jenkins
+tags:
+  - jenkins
+  - macos
+  - ci-cd
+  - automation
+categories:
+  - devops
+  - ci-cd
+  - tools
 ---
 
 Had troubles with setting the remote access and changing the port for Jenkins. It was pretty easy to change the default configurations. Here are the steps:

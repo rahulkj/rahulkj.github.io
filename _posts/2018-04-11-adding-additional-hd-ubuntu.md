@@ -1,8 +1,15 @@
 ---
 layout: post
-title:  "Ubuntu - Adding additional hard drives"
+title: "💾 Ubuntu - Adding Additional Hard Drives"
 date:   2018-04-11 15:33:55 -0600
-categories: ubuntu storage
+tags:
+  - ubuntu
+  - storage
+  - filesystem
+  - linux
+categories:
+  - linux
+  - storage
 ---
 
 - Power off the virtual machine.

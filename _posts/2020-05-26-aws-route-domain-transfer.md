@@ -1,13 +1,18 @@
 ---
 layout: post
-title:  "Transfer AWS domain from one account to another using AWS CLI"
+title: "🌐 Transfer AWS Domain from One Account to Another Using AWS CLI"
 date:   2020-05-26 11:20:00 -0600
-categories: technology
+tags:
+  - aws
+  - domain
+  - dns
+  - cloud
+categories:
+  - cloud
+  - networking
 ---
 
-Procedure to transfer the AWS domain from one AWS account to another AWS account
-
-## Prerequisites
+## ✅ Prerequisites
 - Install AWS cli but following AWS documentation
 
 ## Initiate transfer from old account to new account

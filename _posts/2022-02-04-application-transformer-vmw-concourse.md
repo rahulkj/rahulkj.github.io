@@ -1,8 +1,18 @@
 ---
 layout: post
-title:  "CLI for Automating the configuration of Application Transformer for VMware Tanzu"
+title: "🔧 CLI for Automating the Configuration of Application Transformer for VMware Tanzu"
 date:   2022-02-04 16:51:00 +0530
-categories: application-transformer, application, transformer, vmware, tanzu, at-cli
+tags:
+  - application-transformer
+  - vmware
+  - tanzu
+  - cli
+  - automation
+  - go
+categories:
+  - vmware
+  - automation
+  - tools
 ---
 
 If you've read the previous [blog post](./2022-02-04-application-transformer-vmw.md), then you would have noticed there are a lot of manual steps involved in deployment of the ATVT appliance and configuring it.

@@ -1,11 +1,21 @@
 ---
 layout: post
-title: "Run Korifi on debian based OS running on Raspberry Pi's / vms"
+title: "☸️ Run Korifi on Debian Based OS Running on Raspberry Pi's / VMs"
 date: 2025-02-04 9:30:00 +0530
-categories: korifi, raspberry-pi, ubuntu
+tags:
+  - korifi
+  - cloudfoundry
+  - raspberry-pi
+  - ubuntu
+  - kubernetes
+  - paas
+categories:
+  - cloudfoundry
+  - kubernetes
+  - homelab
 ---
 
-### Prerequisites
+### ✅ Prerequisites
 * Ensure you have a 3 node k8s cluster running on your Raspberry Pi's or virtual machines
 * Ensure you have a loadbalancer provisioned, if not then checkout [metallb](https://metallb.universe.tf/installation/)
 * Provision a storage class and persistent volume

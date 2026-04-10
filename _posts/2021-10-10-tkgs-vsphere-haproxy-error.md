@@ -1,11 +1,20 @@
 ---
 layout: post
-title:  "Error with TKG cluster provisioning"
+title: "❌ Error with TKG Cluster Provisioning"
 date:   2021-10-10 16:51:00 -0600
-categories: tkg, vsphere, k8s, homelab
+tags:
+  - tkg
+  - vsphere
+  - kubernetes
+  - troubleshooting
+  - homelab
+categories:
+  - kubernetes
+  - vmware
+  - troubleshooting
 ---
 
-## Create cluster failed
+## 🚨 Create Cluster Failed
 
 While provisioning a tkg cluster in vSphere, I ran into this error:
 

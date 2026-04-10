@@ -1,8 +1,14 @@
 ---
 layout: post
-title:  "Technical references"
+title: "📚 Technical References"
 date:   2012-02-20 1:53:00 -0600
-categories: technology
+tags:
+  - technology
+  - references
+  - tools
+categories:
+  - general
+  - resources
 ---
 
 This page lacks information. Please stay tuned on this.

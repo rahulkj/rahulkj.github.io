@@ -1,8 +1,17 @@
 ---
 layout: post
-title:  "TKG on vSphere 7"
+title: "☸️ TKG on vSphere 7"
 date:   2020-10-16 8:00:00 -0600
-categories: tkg, vsphere 7, homelab
+tags:
+  - kubernetes
+  - tkg
+  - vsphere
+  - vmware
+  - homelab
+categories:
+  - kubernetes
+  - vmware
+  - homelab
 ---
 
 Love VMware and Tanzu Kubernetes Grid (TKG)?

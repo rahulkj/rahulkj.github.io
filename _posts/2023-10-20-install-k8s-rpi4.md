@@ -1,13 +1,23 @@
 ---
 layout: post
-title:  "Part 2 - Install kubernetes on Raspberry Pi 4 - 8GB"
+title: "☸️ Part 2 - Install Kubernetes on Raspberry Pi 4 - 8GB"
 date:   2023-10-20 10:23:00 +0530
-categories: kubernetes, raspberry pi, flannel, containerd
+tags:
+  - kubernetes
+  - raspberry-pi
+  - flannel
+  - containerd
+  - homelab
+  - arm64
+categories:
+  - kubernetes
+  - homelab
+  - raspberry-pi
 ---
 
 This is part 2 of playing around with kubernetes on Raspberry Pi's.
 
-## Disable swap memory on all Raspberry pi's
+## 🚫 Disable Swap Memory on All Raspberry Pi's
 * Begin with disabling swap memory
 ```
 sudo swapoff -a
@@ -32,7 +42,7 @@ echo " console=serial0,115200 console=tty1 root=PARTUUID=58b06195-02 rootfstype=
 
 * Repeat this on all the nodes
 
-## Installing containerd and network plugins on all Raspberry pi's
+## 🐳 Installing Containerd and Network Plugins on All Raspberry Pi's
 
 * To begin with, we will need to install the required packaged for container runtime, networking and vxlan for flannel to work. To do this, run the following command:
 ```
@@ -54,7 +64,7 @@ sudo vi /etc/containerd/config.toml
 
 * Repeat this on all the nodes
 
-## Allow Iptables to see bridged traffic on all Raspberry pi's
+## 🌉 Allow Iptables to See Bridged Traffic on All Raspberry Pi's
 According to the documentation, Kubernetes needs iptables to be configured to see bridged network traffic.
 
 ```
@@ -80,7 +90,7 @@ sudo sysctl --system
 
 * Repeat this on all the nodes
 
-## Install kubernetes cli's on all Raspberry pi's
+## 🛠️ Install Kubernetes CLI's on All Raspberry Pi's
 
 * Lets install the required cli's to setup kubernetes
 ```
@@ -95,7 +105,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 * Repeat this on all the nodes
 
 
-## Setting up the control-plane node
+## 🎛️ Setting Up the Control-Plane Node
 
 Let us begin with bootstrapping the control-plane (master) node. 
 
@@ -116,7 +126,7 @@ kubeadm join <CONTROL-PLANE-IP>:6443 --token <TOKEN> \
 	--discovery-token-ca-cert-hash sha256:<token-cert-sha>
 ```
 
-### Install the CNI
+### 🌐 Install the CNI
 * We will need the CNI installed, and for this setup, we will setup flannel
 
 ```

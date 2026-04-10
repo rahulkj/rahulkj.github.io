@@ -1,13 +1,19 @@
 ---
 layout: post
-title: "Upgrading TKGs on vCenter 8u3"
+title: "⬆️ Upgrading TKGs on vCenter 8u3"
 date: 2024-07-7 17:10:00 +0530
-categories: kubernetes, vCenter, TKGs
+tags:
+  - kubernetes
+  - vsphere
+  - tkgs
+  - vmware
+  - upgrade
+categories:
+  - kubernetes
+  - vmware
 ---
 
-Amazing new features come with vCenter 8 U3. Checkout the [release notes here](https://docs.vmware.com/en/VMware-vSphere/8.0/rn/vsphere-vcenter-server-803-release-notes/index.html)
-
-### Upgrading workload management supervisor clusters
+### 🎯 Upgrading Workload Management Supervisor Clusters
 Once you have upgraded you vCenter to the latest version, and assuming you have the workload clusters feature turned on, you can follow the steps here to upgrade your supervisor clusters.
 
 * Navigate to Workload Management >> Updates. Here you will notice your cluster listed, with the version of k8s it was provisioned with and then the latest available version

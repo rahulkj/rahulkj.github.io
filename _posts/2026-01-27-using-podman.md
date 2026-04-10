@@ -1,14 +1,19 @@
 ---
-title: "Podman to generate images"
+title: "🐳 Podman to Generate Images"
 date: 2026-01-27T12:32:00-06:00
 draft: false
 tags:
   - kubernetes
   - podman
   - oci
+  - containers
+  - harbor
+categories:
+  - containers
+  - kubernetes
 ---
 
-## Using podman desktop instead of docker
+## 🐧 Using Podman Desktop Instead of Docker
 I've used Docker in the past, and offlate I found it super annoying for the following reasons:
 * Pricing
 * Complexity with experimental features to use insecure registries
@@ -16,12 +21,12 @@ I've used Docker in the past, and offlate I found it super annoying for the foll
 
 So I moved to using podman. 
 
-## Installation on mac
+## 📥 Installation on Mac
 There are 2 options to [install podman](https://podman.io/docs/installation#macos) on the mac. One is to use the installer and 2 is using `brew`.
 
 > brew install podman
 
-## Generating images using Dockerfile
+## 🏗️ Generating Images Using Dockerfile
 Migration from docker to podman was simple. I had existing Dockerfiles in my app repo, and to generate OCI images, all I needed to do was to run `podman` cli and use the `Dockerfile` to build the image
 
 * To generate the OCI images for amd64 and arm64, I used the following commands

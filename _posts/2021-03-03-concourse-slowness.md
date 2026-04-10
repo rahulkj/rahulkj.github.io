@@ -1,8 +1,15 @@
 ---
 layout: post
-title:  "Concourse jobs are waiting too long before kicking off"
+title: "⏱️ Concourse Jobs Are Waiting Too Long Before Kicking Off"
 date:   2021-03-03 10:00:00 -0600
-categories: concourse, ci
+tags:
+  - concourse
+  - ci-cd
+  - troubleshooting
+  - bosh
+categories:
+  - devops
+  - ci-cd
 ---
 
 Have you encountered an issue where you triggered the build in concourse, and there is a lag in the time when the build starts?

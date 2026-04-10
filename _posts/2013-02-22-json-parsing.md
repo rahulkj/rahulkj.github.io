@@ -1,8 +1,16 @@
 ---
 layout: post
-title:  "JSON Parsing"
+title: "📝 JSON Parsing"
 date:   2013-02-22 15:05:00 -0600
-categories: java json
+tags:
+  - java
+  - json
+  - parsing
+  - spring
+  - rest
+categories:
+  - development
+  - programming
 ---
 
 Recently, I had a requirement, where in I had to read a property file which contains JSON strings.

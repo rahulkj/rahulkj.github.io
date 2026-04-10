@@ -1,8 +1,17 @@
 ---
 layout: post
-title:  "Tanzu Platform with CloudFoundry Runtime"
+title: "☁️ Tanzu Platform with CloudFoundry Runtime"
 date:   2024-05-31 07:40:00 +0530
-categories: cloudfoundry, tanzu
+tags:
+  - cloudfoundry
+  - tanzu
+  - vmware
+  - paas
+  - platform
+categories:
+  - cloudfoundry
+  - vmware
+  - paas
 ---
 
 Tanzu Platform with CloudFoundry Runtime is a great platform to run your cloud native applications. You can run almost any application on this runtime. This platform can be deployed and operated on any Public IaaS, be it AWS, GCP, Azure or On-Prem IaaS namely vSphere, Openstack etc

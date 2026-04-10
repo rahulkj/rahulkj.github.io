@@ -1,8 +1,15 @@
 ---
 layout: post
-title:  "Transfer all git repos to another org"
+title: "🔄 Transfer All Git Repos to Another Org"
 date:   2019-07-27 05:28:00 -0600
-categories: git ownership
+tags:
+  - git
+  - github
+  - automation
+  - scripting
+categories:
+  - devops
+  - tools
 ---
 
 I wrote a handy script to transfer ownership of all repositories that belong to a user, to another user/org

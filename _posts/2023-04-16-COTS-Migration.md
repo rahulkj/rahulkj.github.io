@@ -1,11 +1,20 @@
 ---
 layout: post
-title:  "Thoughts on Migration COTS applications"
+title: "💭 Thoughts on Migration COTS Applications"
 date:   2023-04-16 8:23:00 +0530
-categories: kubernetes, application modernization, COTS
+tags:
+  - kubernetes
+  - modernization
+  - cots
+  - migration
+  - containers
+categories:
+  - kubernetes
+  - migration
+  - modernization
 ---
 
-## Commercial Off The Shelf (COTS) Applications
+## 🛒 Commercial Off The Shelf (COTS) Applications
 Commercial off-the-shelf (COTS) applications, are vendor provided software, that are meant to be installed on virtual machines or bare metal hardware within the datacenters. Some of the COTS applications, provide a customized portal, using which companies can build or generate application code, that could then be run on some middleware solutions that the vendor provides.
 
 ## Challenges Involved in containerizing these prodcts

@@ -1,17 +1,25 @@
 ---
 layout: post
-title:  "Harbor Installation on Ubuntu"
+title: "📦 Harbor Installation on Ubuntu"
 date:   2022-02-03 16:51:00 -0600
-categories: harbor, vm, ubuntu
+tags:
+  - harbor
+  - ubuntu
+  - containers
+  - registry
+  - docker
+categories:
+  - containers
+  - homelab
 ---
 
-## Pre-reqs for VM
+## 🖥️ Pre-reqs for VM
 * 2 vCPU
 * 4GB RAM
 * 200GB HDD
 * Routable IP
 
-## Install Docker compose on the Ubuntu VM
+## 🐳 Install Docker Compose on the Ubuntu VM
 
 Before you begin the harbor installation, you need to install docker compose on your machine. To do this, get the latest release from [releases page](https://github.com/docker/compose/releases).
 
@@ -27,7 +35,7 @@ Before you begin the harbor installation, you need to install docker compose on 
 
     > docker-compose --version
 
-## Install Harbor (Offline)
+## 📦 Install Harbor (Offline)
 
 Once you have installed docker-compose, get the latest harbor version from [Harbor Release page](https://github.com/goharbor/harbor/releases). 
 

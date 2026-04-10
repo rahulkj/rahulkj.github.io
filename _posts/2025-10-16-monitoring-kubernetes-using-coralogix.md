@@ -1,11 +1,20 @@
 ---
 layout: post
-title: "Kubernetes monitoring"
+title: "📊 Kubernetes Monitoring Using Coralogix"
 date: 2025-10-16 12:20:00 +0530
-categories: coralogix, monitoring, kubernetes
+tags:
+  - coralogix
+  - monitoring
+  - kubernetes
+  - logging
+  - observability
+categories:
+  - monitoring
+  - kubernetes
+  - logging
 ---
 
-## Observability into k8s platform
+## 👁️ Observability Into K8s Platform
 Kubernetes has been out there for a while, and companies use it heavily to deploy and release their applications faster to market. The platform offers scalability, recovery of pods, etc.
 
 But one area that has been of constant struggle, i.e. platform observability.

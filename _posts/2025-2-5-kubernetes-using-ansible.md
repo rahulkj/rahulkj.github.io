@@ -1,13 +1,21 @@
 ---
 layout: post
-title: "Ansible playbook for managing k8s ops"
+title: "🤖 Ansible Playbook for Managing K8s Ops"
 date: 2025-02-05 12:40:00 +0530
-categories: ansible, kubernetes, raspberry-pi, ubuntu
+tags:
+  - ansible
+  - kubernetes
+  - raspberry-pi
+  - ubuntu
+  - automation
+  - homelab
+categories:
+  - automation
+  - kubernetes
+  - homelab
 ---
 
-If you are looking to bootstrap or destroy the k8s clusters that are provisioned on you raspberry Pi's or vms using kubeadm, then you are in the right place. This blog will guide you on how to install the full blown k8s components, and not k3s or microk8s.
-
-### Pre-requsities
+### 📋 Pre-requisites
 * Install all the required cli's on your mac
   * ansible
   * direnv

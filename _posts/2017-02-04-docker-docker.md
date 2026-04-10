@@ -1,8 +1,15 @@
 ---
 layout: post
-title:  "Docker Docker"
+title: "🐳 Docker - Building Custom Images"
 date:   2017-02-04 13:36:00 -0600
-categories: docker
+tags:
+  - docker
+  - containers
+  - concourse
+  - ci-cd
+categories:
+  - containers
+  - devops
 ---
 
 - To create a docker image, first create a `Dockerfile` in a director and then start editing the file.

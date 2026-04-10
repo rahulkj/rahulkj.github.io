@@ -1,8 +1,17 @@
 ---
 layout: post
-title:  "'bosh create' fails due to disk format issue on vSphere"
+title: "❌ 'Bosh Create' Fails Due to Disk Format Issue on vSphere"
 date:   2017-11-08 17:31:00 -0600
-categories: bosh error vSphere
+tags:
+  - bosh
+  - vsphere
+  - troubleshooting
+  - ntp
+  - storage
+categories:
+  - cloudfoundry
+  - troubleshooting
+  - vmware
 ---
 
 This is one crazy issue where I saw that bosh create on `vSphere` resulted in a stemcell creation, but when the bosh director vm was being created, I saw the error the bosh director vm that looked like

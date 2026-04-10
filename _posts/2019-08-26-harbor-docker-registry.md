@@ -1,11 +1,19 @@
 ---
 layout: post
-title:  "Harbor & Docker Images"
+title: "🐳 Harbor & Docker Images"
 date:   2019-08-26 14:07:00 -0600
-categories: docker harbor registry
+tags:
+  - docker
+  - harbor
+  - registry
+  - containers
+  - homelab
+categories:
+  - containers
+  - devops
 ---
 
-## Why Harbor?
+## 🧐 Why Harbor?
 [Harbor](https://goharbor.io/) is an open source cloud native registry that stores, signs, and scans container images for vulnerabilities.
 
 Harbor solves common challenges by delivering trust, compliance, performance, and interoperability. It fills a gap for organizations and applications that cannot use a public or cloud-based registry, or want a consistent experience across clouds.

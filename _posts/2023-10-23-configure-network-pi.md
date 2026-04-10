@@ -1,17 +1,20 @@
 ---
 layout: post
-title:  "Part 1 - Assigining a static IP and allowing password based Auth on Ubuntu 23.10"
+title: "🔧 Part 1 - Assigning a Static IP and Allowing Password Based Auth on Ubuntu 23.10"
 date:   2023-10-23 10:27:00 +0530
-categories: ubuntu, ssh, network
+tags:
+  - ubuntu
+  - ssh
+  - network
+  - raspberry-pi
+  - homelab
+categories:
+  - homelab
+  - networking
+  - raspberry-pi
 ---
 
-Recently, I installed ubuntu 23.10 on my Raspberry Pi 4, and I realized there were a few changes that were done with netplan configurations. 
-
-Also I was unable to ssh using password to any of the Pi's.
-
-So it made me think to blog this and keep it handy for myself and others like me who are in the same boat.
-
-## Setting up network after the first boot
+## 🌐 Setting Up Network After the First Boot
 
 When you connect to your Pi after the first boot, and login with the default username / password - `ubuntu / ubuntu`, you are prompted to change the login password.
 

@@ -1,8 +1,17 @@
 ---
 layout: post
-title:  "Changing RabbitMQ mnesia database location"
+title: "🐇 Changing RabbitMQ Mnesia Database Location"
 date:   2014-02-07 12:01:00 -0600
-categories: rabbitmq mnesia database
+tags:
+  - rabbitmq
+  - mnesia
+  - database
+  - storage
+  - clustering
+categories:
+  - messaging
+  - infrastructure
+  - storage
 ---
 
 Recently, I had a requirement to install and setup a RabbitMQ cluster on RHEL. (Refer to my post regarding Installing RabbitMQ on RHEL).
