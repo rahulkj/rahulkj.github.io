@@ -1,0 +1,99 @@
+name: Publish to Social Media
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_posts/*.md'
+
+jobs:
+  extract-post:
+    runs-on: ubuntu-latest
+    outputs:
+      title: ${{ steps.extract.outputs.title }}
+      url: ${{ steps.extract.outputs.url }}
+      excerpt: ${{ steps.extract.outputs.excerpt }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract latest post info
+        id: extract
+        run: |
+          # Get the most recently modified post
+          POST=$(ls -t _posts/*.md | head -1)
+          
+          # Extract title (handle both formats)
+          TITLE=$(grep -m1 '^title:' "$POST" | sed 's/title: *//' | tr -d '"')
+          echo "title=$TITLE" >> $GITHUB_OUTPUT
+          
+          # Generate URL from filename
+          FILENAME=$(basename "$POST" .md)
+          echo "url=https://rahulkj.github.io$FILENAME.html" >> $GITHUB_OUTPUT
+          
+          # Extract excerpt (first paragraph)
+          EXCERPT=$(sed -n '/^---$/,/^---$/p' "$POST" | head -20 | grep -v '^---' | head -1 | xargs)
+          echo "excerpt=$EXCERPT" >> $GITHUB_OUTPUT
+          
+          echo "Latest post: $TITLE -> https://rahulkj.github.io$FILENAME.html"
+
+  post-to-social:
+    needs: extract-post
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post to Twitter/X
+        if: env.TWITTER_API_KEY != ''
+        run: |
+          # Twitter v2 API
+          curl -X POST "https://api.twitter.com/2/tweets" \
+            -H "Authorization: Bearer ${{ secrets.TWITTER_ACCESS_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d '{"text": "📝 New Blog Post: ${{ needs.extract-post.outputs.title }}\n\n${{ needs.extract-post.outputs.url }}"}'
+
+      - name: Post to LinkedIn
+        if: env.LINKEDIN_ACCESS_TOKEN != ''
+        run: |
+          # LinkedIn API
+          curl -X POST "https://api.linkedin.com/v2/ugcPosts" \
+            -H "Authorization: Bearer ${{ secrets.LINKEDIN_ACCESS_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -H "X-Restli-Protocol-Version: 2.0.0" \
+            -d '{
+              "author": "urn:li:person:${{ secrets.LINKEDIN_PERSON_ID }}",
+              "lifecycleState": "PUBLISHED",
+              "specificContent": {
+                "com.linkedin.ugc.ShareContent": {
+                  "shareCommentary": {
+                    "text": "📝 New Blog Post: ${{ needs.extract-post.outputs.title }}\n\n${{ needs.extract-post.outputs.url }}"
+                  },
+                  "shareMediaCategory": "ARTICLE"
+                }
+              },
+              "visibility": {
+                "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
+              }
+            }'
+
+      - name: Post to Facebook
+        if: env.FACEBOOK_ACCESS_TOKEN != ''
+        run: |
+          curl -X POST "https://graph.facebook.com/v18.0/${{ secrets.FACEBOOK_PAGE_ID }}/feed" \
+            -d "message=📝 New Blog Post: ${{ needs.extract-post.outputs.title }}\n\n${{ needs.extract-post.outputs.url }}" \
+            -d "access_token=${{ secrets.FACEBOOK_ACCESS_TOKEN }}"
+
+      - name: Fallback - IFTTT Webhook (no API keys needed)
+        if: env.TWITTER_API_KEY == ''
+        run: |
+          if [ -n "${{ secrets.IFTTT_KEY }}" ]; then
+            curl -X POST "https://maker.ifttt.com/trigger/new_blog_post/with/key/${{ secrets.IFTTT_KEY }}" \
+              -d "value1=${{ needs.extract-post.outputs.title }}" \
+              -d "value2=${{ needs.extract-post.outputs.url }}"
+          fi
+          echo "Social media posting skipped - no API keys configured"
+          echo "To enable, add these secrets in GitHub:"
+          echo "  - TWITTER_ACCESS_TOKEN"
+          echo "  - LINKEDIN_ACCESS_TOKEN" 
+          echo "  - LINKEDIN_PERSON_ID"
+          echo "  - FACEBOOK_ACCESS_TOKEN"
+          echo "Or use IFTTT (simpler):"
+          echo "  - IFTTT_KEY"
